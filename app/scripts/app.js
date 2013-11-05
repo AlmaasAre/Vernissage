@@ -1,18 +1,8 @@
 'use strict';
 
-angular.module('VernissageApp', [
+var app = angular.module('VernissageApp', [
   'ngRoute',
   'ngCookies',
   'ngResource',
   'ngSanitize'
-])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+]);
