@@ -24,10 +24,61 @@
 			.title {
 				font-size: 20px;
 				margin: 0;
+				margin-bottom: .5em;
 				font-weight: normal;
+				vertical-align: middle;
+				position: relative;
+				padding-left: .75em;
+
+				&.available {
+					&:after {
+						content: "";
+						background-color: green;
+						float: right;
+						height: .5em;
+						width: .5em;
+						border-radius: 1em;
+						position: absolute;
+						top: 35%;
+						left: 0;
+					}
+				}
+
+				&:not(.available) {
+					&:after {
+						content: "";
+						background-color: #c00;
+						float: right;
+						height: .5em;
+						width: .5em;
+						border-radius: 1em;
+						position: absolute;
+						top: 35%;
+						left: 0;
+					}
+				}
+			}
+
+			.dep, .job {
+				font-size: 14px;
+				padding: .25em .5em;
+				border-radius: .25em;
+				background-color: green;
+				color: white;
+			}
+
+			.job {
+
 			}
 
 			.projects {
+				margin-top: .5em;
+			}
+
+			.p_title {
+				font-size: 18px;
+				font-weight: bold;
+				margin: 0;
 				margin-top: .5em;
 			}
 
@@ -35,9 +86,31 @@
 				float: left;
 				font-size: 14px;
 				padding: .25em .5em;
-				background-color: $color-pink;
 				border-radius: .25em;
+				color: white;
+				margin-top: .5em;
+
+				&:not(:last-child) {
+					margin-right: .5em;
+				}
+
+				&:nth-of-type(1) {
+					background-color: $color-petrol;
+				}
+
+				&:nth-of-type(2) {
+					background-color: $color-pink;
+				}
+
+				&:nth-of-type(3) {
+					background-color: $color-bordeaux;
+				}
+
+				&:nth-of-type(4) {
+					background-color: $color-moss;
+				}
 			}
+
 		}
 	}
 }

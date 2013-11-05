@@ -5,32 +5,92 @@ app
     	$scope.tiles = [
       		{
       			name: 'Navn Navnesen',
-      			dep: 'Front-end',
+      			dep: 'Front-end & Mobile',
       			job: 'Front-end Developer',
+      			available: true,
       			projects: [
-      				'Vernissage'
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
       			]
       		},
       		{
-      			name: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end & Mobile',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
+      			]
       		},
       		{
-      			name: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end & Mobile',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
+      			]
       		},
       		{
-      			name: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end & Mobile',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
+      			]
       		},
       		{
-      			name: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end & Mobile',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
+      			]
       		},
       		{
-      			name: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end & Mobile',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
+      			]
       		},
       		{
-      			name: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end & Mobile',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
+      			]
       		},
       		{
-      			name: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end & Mobile',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage',
+      				'Statens Kartverk',
+      				'Haavind',
+      				'Internal'
+      			]
       		}
     	];
   	});
