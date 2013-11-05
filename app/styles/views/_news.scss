@@ -1,3 +1,32 @@
 .news {
+	background: $color-pink;
+	height: $screenHeight;
+	width: $screenWidth;
 
+	.news-inner {
+		padding: 16em 3em;
+		text-align: center;
+
+		h1 {
+			font-size: 7em;
+			color: #fff;
+			margin: 0px;
+			padding: 0px;
+
+			small {
+				font-size: 0.5em;
+				display: block;
+				color: #000;
+				margin-bottom: 0.4em;
+				text-transform: uppercase;
+			}
+		}
+
+		.logo {
+			position: absolute;
+			right: 5em;
+			bottom: 5em;
+			width: 200px;
+		}
+	}
 }
