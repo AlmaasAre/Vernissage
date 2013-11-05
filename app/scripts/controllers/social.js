@@ -2,95 +2,10 @@
 
 app
   	.controller('SocialCtrl', function ($scope) {
-    	$scope.tiles = [
+    	$scope.contents = [
       		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			available: true,
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Navn Navnesen',
-      			dep: 'Front-end & Mobile',
-      			job: 'Front-end Developer',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
+      			url: 'http://placekitten.com/640/800',
+      			video: false
       		}
     	];
   	});
