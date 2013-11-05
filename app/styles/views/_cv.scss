@@ -16,119 +16,124 @@
 /* --------------------------------
     General
 -------------------------------- */
-.cv {
-	
-	.tile-wrapper {
-		position: relative;
-		width: $tileWidth - ($gutter*2);
-		height: $tileHeight - ($gutter*2);
+.cv .tile-wrapper {
+	position: relative;
+	width: $tileWidth - ($gutter*2);
+	height: $tileHeight - ($gutter*2);
+	box-sizing: border-box;
+	float: left;
+	margin: $gutter;
+	background-color: #fff;
+	text-align: center;
+	position: relative;
+
+	.image {
+		border-radius: 50%;
+		height: 150px;
+		width: 150px;
+		margin-top: $gutter*8;
+	}
+
+	.tile-inner {
 		box-sizing: border-box;
-		float: left;
-		margin: $gutter;
+		padding: $gutter*4;
+		width: 100%;
 		background-color: #fff;
+		float: left;
 
-		.image {
-			width: 100%;
-			float: left;
-		}
+		.title {
+			font-size: 22px;
+			margin: 0;
+			margin-bottom: 3px;
+			font-weight: normal;
+			vertical-align: middle;
 
-		.tile-inner {
-			box-sizing: border-box;
-			padding: $gutter*2;
-			width: 100%;
-			background-color: #fff;
-			float: left;
-
-			.title {
-				font-size: 20px;
-				margin: 0;
-				margin-bottom: .5em;
-				font-weight: normal;
-				vertical-align: middle;
-				position: relative;
-				padding-left: .75em;
-
-				&.available {
-					&:after {
-						content: "";
-						background-color: green;
-						float: right;
-						height: .5em;
-						width: .5em;
-						border-radius: 1em;
-						position: absolute;
-						top: 35%;
-						left: 0;
-					}
-				}
-
-				&:not(.available) {
-					&:after {
-						content: "";
-						background-color: #c00;
-						float: right;
-						height: .5em;
-						width: .5em;
-						border-radius: 1em;
-						position: absolute;
-						top: 35%;
-						left: 0;
-					}
-				}
-			}
-
-			.dep, .job {
-				font-size: 14px;
-				padding: .25em .5em;
-				border-radius: .25em;
-				background-color: green;
-				color: white;
-			}
-
-			.job {
-
-			}
-
-			.projects {
-				margin-top: .5em;
-			}
-
-			.p_title {
-				font-size: 18px;
-				font-weight: bold;
-				margin: 0;
-				margin-top: .5em;
-			}
-
-			.project {
-				float: left;
-				font-size: 14px;
-				padding: .25em .5em;
-				border-radius: .25em;
-				color: white;
-				margin-top: .5em;
-
-				&:not(:last-child) {
-					margin-right: .5em;
-				}
-
-				&:nth-of-type(1) {
-					background-color: $color-petrol;
-				}
-
-				&:nth-of-type(2) {
+			&.available {
+				&:after {
+					content: "";
 					background-color: $color-pink;
-				}
-
-				&:nth-of-type(3) {
-					background-color: $color-bordeaux;
-				}
-
-				&:nth-of-type(4) {
-					background-color: $color-moss;
+					float: right;
+					height: .7em;
+					width: .7em;
+					border-radius: 50%;
+					position: absolute;
+					top: $gutter*4;
+					right: $gutter*4;
 				}
 			}
 
+			&:not(.available) {
+				&:after {
+					content: "";
+					background-color: #bbb;
+					float: right;
+					height: .7em;
+					width: .7em;
+					border-radius: 50%;
+					position: absolute;
+					top: $gutter*4;
+					right: $gutter*4;
+				}
+			}
 		}
+
+		.dep, .job {
+			font-size: 13px;
+			color: #888;
+		}
+
+		.job {
+
+		}
+
+		.projects {
+			margin-top: .5em;
+		}
+
+		h2 {
+			font-size: 14px;
+			text-transform: uppercase;
+			font-weight: bold;
+			margin: 0;
+			margin-top: 25px;
+			margin-bottom: 5px;
+		}
+
+		p {
+			margin: 0px;
+			font-size: 14px;
+		}
+
+		.project {
+			display: inline-block;
+			font-size: 14px;
+			padding: .25em .5em;
+			border-radius: .25em;
+			color: white;
+			margin-top: .5em;
+			background: $color-pink;
+			margin: 3px;
+
+			// &:not(:last-child) {
+			// 	margin-right: .5em;
+			// }
+
+			// &:nth-of-type(1) {
+			// 	background-color: $color-petrol;
+			// }
+
+			// &:nth-of-type(2) {
+			// 	background-color: $color-pink;
+			// }
+
+			// &:nth-of-type(3) {
+			// 	background-color: $color-bordeaux;
+			// }
+
+			// &:nth-of-type(4) {
+			// 	background-color: $color-moss;
+			// }
+		}
+
 	}
 }
