@@ -18,8 +18,6 @@ app
 
     		for(var i = 0; i < 25; i++) {
 
-				console.log(i);
-
     			if(Math.floor((Math.random()*3)+1) === 1)
     			{
     				$scope.contents.push(video);
@@ -31,9 +29,17 @@ app
     			}
     		}
 
-    		console.log($scope.contents);
     	}
 
     	createArray();
+
+    	var videoes = document.getElementsByClassName("video");
+
+    	console.log(videoes);
+
+    	for(var j = 0; j < videoes.length; j++) {
+    		console.log("play " + j);
+    		videoes[j].play();
+    	}
 
   	});
