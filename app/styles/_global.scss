@@ -10,16 +10,43 @@
 /* --------------------------------
     Variables
 -------------------------------- */
-$screenWidth: 1500px;
-$screenHeight: ($screenWidth/16)*9 + "px";
 
 
 /* --------------------------------
     General
 -------------------------------- */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #eee;
+}
+
 .wrapper {
 	width: $screenWidth;
 	height: $screenHeight;
-	background: #eee;
-	padding: 20px;
+	position: relative;
+	background: $wrapperBackground;
+	margin: $gutter/2;
 }
+
+.tile {
+	height: $tileHeight;
+	width: $tileWidth;
+	background-color: white;
+	float: left;
+	border: $gutter/2 solid $wrapperBackground;
+
+	&.double-width {
+		width: $tileWidth * 2;
+	}
+
+	&.double-height {
+		height: $tileHeight * 2;
+	}
+}
+
+

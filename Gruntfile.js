@@ -117,7 +117,7 @@ module.exports = function (grunt) {
       server: {
         options: {
           environment: 'development',
-          debugInfo: false
+          debugInfo: true
         }
       }
     },
