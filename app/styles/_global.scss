@@ -1,0 +1,52 @@
+/* --------------------------------
+    TABLE OF CONTENTS
+-----------------------------------
+    Variables
+    General
+
+----- */
+
+
+/* --------------------------------
+    Variables
+-------------------------------- */
+
+
+/* --------------------------------
+    General
+-------------------------------- */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #eee;
+}
+
+.wrapper {
+	width: $screenWidth;
+	height: $screenHeight;
+	position: relative;
+	background: $wrapperBackground;
+	margin: $gutter/2;
+}
+
+.tile {
+	height: $tileHeight;
+	width: $tileWidth;
+	background-color: white;
+	float: left;
+	border: $gutter/2 solid $wrapperBackground;
+
+	&.double-width {
+		width: $tileWidth * 2;
+	}
+
+	&.double-height {
+		height: $tileHeight * 2;
+	}
+}
+
+
