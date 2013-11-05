@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('VernissageApp')
+app
   .controller('CvCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
