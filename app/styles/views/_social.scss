@@ -1,14 +1,18 @@
 .social {
+	font-size: 0;
+
 	.content-container {
+		font-size: 1rem;
 		width: 20%;
-		height: auto;
+		height: 13em;
 		position: relative;
 		display: inline-block;
-		margin: 0;
+		vertical-align: top;
+		overflow: hidden;
 	}
 
 	.content {
-		position: relative;
+		position: absolute;
 		display: block;
 		width: 100%;
 	}
