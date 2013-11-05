@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('VernissageApp', [
+  'ngRoute',
   'ngCookies',
   'ngResource',
   'ngSanitize'

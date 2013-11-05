@@ -18,17 +18,9 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
     watch: {
-      coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-        tasks: ['coffee:dist']
-      },
-      coffeeTest: {
-        files: ['test/spec/{,*/}*.coffee'],
-        tasks: ['coffee:test']
-      },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['copy:styles', 'autoprefixer']
+        files: ['<%= yeoman.app %>/styles/**/*.scss'],
+        tasks: ['compass:server', 'autoprefixer']
       },
       livereload: {
         options: {
@@ -107,28 +99,26 @@ module.exports = function (grunt) {
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
     },
-    coffee: {
+    compass: {
       options: {
-        sourceMap: true,
-        sourceRoot: ''
+        sassDir: '<%= yeoman.app %>/styles',
+        cssDir: '.tmp/styles',
+        imagesDir: '<%= yeoman.app %>/images',
+        javascriptsDir: '<%= yeoman.app %>/scripts',
+        fontsDir: '<%= yeoman.app %>/styles/fonts',
+        importPath: '<%= yeoman.app %>/styles',
+        relativeAssets: true
       },
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/scripts',
-          ext: '.js'
-        }]
+        options: {
+            environment: 'production'
+        }
       },
-      test: {
-        files: [{
-          expand: true,
-          cwd: 'test/spec',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/spec',
-          ext: '.js'
-        }]
+      server: {
+        options: {
+          environment: 'development',
+          debugInfo: false
+        }
       }
     },
     // not used since Uglify task does concat,
@@ -248,15 +238,12 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'coffee:dist',
         'copy:styles'
       ],
       test: [
-        'coffee',
         'copy:styles'
       ],
       dist: [
-        'coffee',
         'copy:styles',
         'imagemin',
         'svgmin',
@@ -302,6 +289,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'compass:server',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -319,6 +307,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'compass:dist',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
