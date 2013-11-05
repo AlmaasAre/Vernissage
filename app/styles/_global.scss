@@ -23,6 +23,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #eee;
+	font-family: 'Noto Sans', sans-serif;
 }
 
 .wrapper {
@@ -39,6 +40,7 @@ body {
 	background-color: white;
 	float: left;
 	border: $gutter/2 solid $wrapperBackground;
+	padding: $gutter*3;
 
 	&.double-width {
 		width: $tileWidth * 2;
