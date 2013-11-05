@@ -11,7 +11,7 @@
 /* --------------------------------
     General
 -------------------------------- */
-$screenWidth: 1500px;
+$screenWidth: 1920px;
 $screenHeight: ($screenWidth/16)*9;
 
 $gutter: 6px;
@@ -27,7 +27,7 @@ $tileHeight: $screenHeight/2;
 /* --------------------------------
     Colors
 -------------------------------- */
-$wrapperBackground: #ccc;
+$wrapperBackground: #666;
 $color-bordeaux: rgb(93, 7, 73);
 $color-petrol: rgb(42, 108, 98);
 $color-moss: rgb(99, 111, 3);
@@ -37,4 +37,4 @@ $color-pink: rgb(232, 50, 120);
 /* --------------------------------
     Typography
 -------------------------------- */
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
+@import url("http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic");
