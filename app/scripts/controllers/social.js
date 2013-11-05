@@ -4,7 +4,33 @@ app
   	.controller('SocialCtrl', function ($scope) {
     	$scope.tiles = [
       		{
-      			title: 'Test'
+      			name: 'Navn Navnesen',
+      			dep: 'Front-end',
+      			job: 'Front-end Developer',
+      			projects: [
+      				'Vernissage'
+      			]
+      		},
+      		{
+      			name: 'Test'
+      		},
+      		{
+      			name: 'Test'
+      		},
+      		{
+      			name: 'Test'
+      		},
+      		{
+      			name: 'Test'
+      		},
+      		{
+      			name: 'Test'
+      		},
+      		{
+      			name: 'Test'
+      		},
+      		{
+      			name: 'Test'
       		}
     	];
   	});
