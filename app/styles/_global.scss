@@ -1,0 +1,25 @@
+/* --------------------------------
+    TABLE OF CONTENTS
+-----------------------------------
+    Variables
+    General
+
+----- */
+
+
+/* --------------------------------
+    Variables
+-------------------------------- */
+$screenWidth: 1500px;
+$screenHeight: ($screenWidth/16)*9 + "px";
+
+
+/* --------------------------------
+    General
+-------------------------------- */
+.wrapper {
+	width: $screenWidth;
+	height: $screenHeight;
+	background: #eee;
+	padding: 20px;
+}
