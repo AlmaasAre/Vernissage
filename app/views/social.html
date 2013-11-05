@@ -1,6 +1,6 @@
 <div class="social">
-	<span ng-repeat="content in contents">
-		<img ng-if="!content.video" ng-src="{{content.url}}">
-		<video ng-if="content.video" ng-src="{{content.url}}"></video>
-	</span>
+	<div ng-repeat="content in contents" class="content-container">
+		<img class="content" ng-if="!content.video" ng-src="{{content.url}}">
+		<video class="content" ng-if="content.video" ng-src="{{content.url}}"></video>
+	</div>
 </div>
