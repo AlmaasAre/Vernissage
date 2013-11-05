@@ -1,6 +1,13 @@
 <div class="social">
 
-	<div class="tile" ng-repeat="tile in tiles">
-		<span class="title">{{tile.title}}</span>
+	<div class="tile-wrapper" ng-repeat="tile in tiles">
+		<img class="image" src="http://placekitten.com/200/100" alt="">
+		<div class="tile-inner">
+			<h1 class="title">{{tile.name}}</h1>
+
+			<div class="projects">
+				<span class="project" ng-repeat="p in tile.projects">{{p}}</span>
+			</div>
+		</div>
 	</div>
 </div>

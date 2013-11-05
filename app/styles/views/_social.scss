@@ -1,3 +1,43 @@
 .social {
 
+	.tile-wrapper {
+		position: relative;
+		width: $tileWidth - ($gutter*2);
+		height: $tileHeight - ($gutter*2);
+		box-sizing: border-box;
+		float: left;
+		margin: $gutter;
+		background-color: #fff;
+
+		.image {
+			width: 100%;
+			float: left;
+		}
+
+		.tile-inner {
+			box-sizing: border-box;
+			padding: $gutter*2;
+			width: 100%;
+			background-color: #fff;
+			float: left;
+
+			.title {
+				font-size: 20px;
+				margin: 0;
+				font-weight: normal;
+			}
+
+			.projects {
+				margin-top: .5em;
+			}
+
+			.project {
+				float: left;
+				font-size: 14px;
+				padding: .25em .5em;
+				background-color: $color-pink;
+				border-radius: .25em;
+			}
+		}
+	}
 }
