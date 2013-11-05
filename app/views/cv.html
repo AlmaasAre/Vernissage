@@ -1,10 +1,18 @@
 <div class="cv">
-	<div class="tile"></div>
-	<div class="tile"></div>
-	<div class="tile"></div>
-	<div class="tile"></div>
-	<div class="tile"></div>
-	<div class="tile"></div>
-	<div class="tile"></div>
-	<div class="tile"></div>
+	<div class="tile-wrapper" ng-repeat="tile in tiles">
+		<img class="image" ng-src="{{tile.img}}" alt="">
+		<div class="tile-inner">
+			<h1 class="title" ng-class="{available: tile.available}">{{tile.name}}</h1>
+			<span class="dep" ng-show="tile.dep">{{tile.dep}}</span>
+			<span class="dep" ng-show="tile.job">{{tile.job}}</span>
+
+			<h2>Hva gjør du nå?</h2>
+			<p>{{tile.custom}}</p>
+
+			<div class="projects">
+				<h2 >Prosjekter</h2>
+				<span class="project" ng-repeat="p in tile.projects">{{p}}</span>
+			</div>
+		</div>
+	</div>
 </div>
