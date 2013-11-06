@@ -7,6 +7,12 @@ app
     	var _next = 0;
     	var _queue = [];
 
+        // Randomize Array function
+        function shuffle(o){ //v1.0
+            for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            return o;
+        };
+
     	var _getPlaying = function() {
     		return _playing;
     	}
@@ -27,7 +33,9 @@ app
             {
                 _next = 0;
 
+                _queue = shuffle(_queue);
             }
+
 
             $rootScope.$broadcast('Video', _queue[_next]);
     	}
