@@ -30,6 +30,9 @@ app
 
     			element[0].addEventListener('ended', function() {
     				// console.log("ENDED");
+
+                    //Go to first frame
+                    element[0].currentTime = 0;
     				Video.finished();
     			});
 
