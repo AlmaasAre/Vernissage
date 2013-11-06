@@ -8,7 +8,9 @@ app
       //Create a fake and random array of contents
     	function createArray() {
 
-    		  for(var i = 0; i < 25; i++) {
+          var numberOfContents = 16;
+
+    		  for(var i = 0; i < numberOfContents; i++) {
 
         			if(Math.floor((Math.random()*3)+1) === 1)
         			{
