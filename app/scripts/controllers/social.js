@@ -3,15 +3,6 @@
 app
   	.controller('SocialCtrl', function ($scope) {
 
-  		var video = {
-      			url: 'http://www.w3schools.com/html/mov_bbb.mp4',
-      			video: true
-      		};
-
-  		var image = {
-  			url: 'http://placekitten.com/320/180'
-  		};
-
     	$scope.contents = [];
 
     	function createArray() {
@@ -20,12 +11,19 @@ app
 
     			if(Math.floor((Math.random()*3)+1) === 1)
     			{
-    				$scope.contents.push(video);
+    				  $scope.contents.push({
+                  id:i,
+                  url: 'http://www.w3schools.com/html/mov_bbb.mp4',
+                  video: true
+              });
     			}
 
     			else
     			{
-    				$scope.contents.push(image);
+    				  $scope.contents.push({
+                id:i,
+                url: 'http://placekitten.com/320/180'
+              });
     			}
     		}
 
@@ -41,6 +39,5 @@ app
     	}
 
     	createArray();
-
 
   	});

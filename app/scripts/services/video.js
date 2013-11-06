@@ -21,8 +21,15 @@ app
 
     	var _finished = function() {
     		_next++;
+            // console.log("NEXT",  _queue[_next]);
 
-    		$rootScope.$broadcast(_queue[_next]);
+            if(_next === _queue.length)
+            {
+                _next = 0;
+
+            }
+
+            $rootScope.$broadcast('Video', _queue[_next]);
     	}
 
     	return {
