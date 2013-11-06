@@ -1,6 +1,6 @@
 <div class="social">
 	<div ng-repeat="content in contents track by $index" class="content-container">
 		<img class="content" ng-if="!content.video" ng-src="{{content.url}}">
-		<video class="content video" ng-if="content.video" ng-src="{{content.url}}"></video>
+		<video class="content video" ng-if="content.video" ng-src="{{content.url}}" play></video>
 	</div>
 </div>

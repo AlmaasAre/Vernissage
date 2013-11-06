@@ -29,17 +29,18 @@ app
     			}
     		}
 
+	    	// var videoes = document.getElementsByClassName("video");
+
+	    	// console.log(videoes);
+
+	    	// for(var j = 0; j < videoes.length; j++) {
+
+	    	// 	console.log("play " + j);
+	    	// 	// videoes[j].play();
+	    	// }
     	}
 
     	createArray();
 
-    	var videoes = document.getElementsByClassName("video");
-
-    	console.log(videoes);
-
-    	for(var j = 0; j < videoes.length; j++) {
-    		console.log("play " + j);
-    		videoes[j].play();
-    	}
 
   	});
