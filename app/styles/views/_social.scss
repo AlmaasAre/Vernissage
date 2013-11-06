@@ -3,20 +3,30 @@
 	display: block;
 	height: 100%;
 	width: 100%;
+	backface-visibility: hidden;
+	transform: scale(1);
+	transition: transform 1000ms;
+
+	// &.zoom {
+	// 	transform: scale(7.5) translate(120px, 69px);
+	// }
 
 	.content-container {
+		$grid: 8;
 		font-size: 1rem;
-		width: 25%;
-		height: 25%;
+		width: 100% / $grid;
+		height: 100% / $grid;
 		position: relative;
 		display: inline-block;
 		vertical-align: top;
 		overflow: hidden;
+		transform: translateZ(0);
 	}
 
 	.content {
 		position: absolute;
 		display: block;
 		height: 100%;
+		user-select: none;
 	}
 }
