@@ -31,7 +31,7 @@ body {
 	height: $screenHeight;
 	position: relative;
 	background: $wrapperBackground;
-	margin: $gutter/2;
+	padding: $gutter/2;
 	overflow: hidden;
 }
 
