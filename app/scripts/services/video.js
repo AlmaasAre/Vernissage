@@ -30,21 +30,29 @@ app
     		_next++;
             // console.log("NEXT",  _queue[_next]);
 
-            if(_next === _queue.length)
-            {
-                _next = 0;
-
-                _queue = shuffle(_queue);
-            }
-
             //If the next video is the same as the last, skip it
             if(_queue[_next] === _prev)
             {
                 _next++;
             }
 
+            if(_next === _queue.length)
+            {
+                _prev = _queue[_next];
+
+                _next = 0;
+
+                _queue = shuffle(_queue);
+
+                if(_queue[_next] === _prev)
+                {
+                    _next++;
+                }
+
+            }
+
+
             $rootScope.$broadcast('Video', _queue[_next]);
-            _prev = _queue[_next];
     	}
 
     	return {
