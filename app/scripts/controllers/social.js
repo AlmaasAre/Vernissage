@@ -12,7 +12,7 @@ app
 
     		  for(var i = 0; i < numberOfContents; i++) {
 
-        			if(Math.floor((Math.random()*3)+1) === 1)
+        			if(Math.floor((Math.random()*5)+1) === 1)
         			{
         				  $scope.contents.push({
                       id:i,
