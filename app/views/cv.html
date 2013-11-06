@@ -1,8 +1,8 @@
 <div class="cv">
-	<div class="tile-wrapper" ng-repeat="tile in tiles">
-		<img class="image" ng-src="{{tile.img}}" alt="">
+	<div ng-repeat="tile in selectedTiles track by $index" class="tile-wrapper animated" ng-class="animationClass">
+		<img class="image" ng-src="{{tile.img || '/images/cv-placeholder.jpeg'}}" alt="{{tile.name}}">
 		<div class="tile-inner">
-			<h1 class="title" ng-class="{available: tile.available}">{{tile.name}}</h1>
+			<h1 class="title" ng-class="{available: tile.available}">{{tile.name}} {{tile.number}}</h1>
 			<span class="dep" ng-show="tile.dep">{{tile.dep}}, </span>
 			<span class="dep" ng-show="tile.job">{{tile.job}}</span>
 

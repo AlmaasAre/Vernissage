@@ -1,8 +1,10 @@
 'use strict';
 
 app
-  	.controller('CvCtrl', function ($scope) {
-    	$scope.tiles = [
+  	.controller('CvCtrl', function ($scope, $timeout) {
+    	$scope.animationClass = "flipInY";
+
+    	$scope.people = [
       		{
       			name: 'Helge Standal',
       			dep: 'Department',
@@ -100,20 +102,65 @@ app
       				'Haavind',
       				'Internal'
       			]
-      		},
-      		{
-      			name: 'Ewelina Czarny',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_0629789b936766103b699d64687803e37a827a0c.jpg',
-      			job: 'Title',
-      			available: true,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, omnis.',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
       		}
     	];
+
+    	$scope.tiles = [];
+    	$scope.tmpNewPeople = [];
+		$scope.newPeople = [];
+		$scope.selectedTiles = [];
+		$scope.populateCount = 0;
+
+    	function shuffle(o) { //v1.0
+		    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	    	// console.log("** Shuffled. **");
+		    return o;
+		};
+
+		$scope.populateTiles = function() {
+			$scope.populateCount++;
+			$scope.selectedTiles = [];
+
+			if ($scope.populateCount % 10 == 0 || $scope.populateCount == 1) {
+				$scope.newPeople = [];
+				$scope.tmpNewPeople = [];
+
+				for (var i = 0; i < $scope.people.length; i++) {
+					$scope.tmpNewPeople.push($scope.people[i]);
+				}
+
+				// console.log("** Kjørt gjennom alle people **");
+			}
+
+			$scope.newPeople = shuffle($scope.tmpNewPeople);
+
+			for (var i = 0; i < 8; i++) {
+				$scope.selectedTiles.push($scope.newPeople[i]);
+			}
+
+			// console.log("Populate count: " + $scope.populateCount);
+			// console.log("Selected tiles: " + $scope.selectedTiles.length);
+			// console.log("Tmp new people: " + $scope.tmpNewPeople.length);
+			// console.log("New people: " + $scope.newPeople.length);
+			// console.log("People: " + $scope.people.length);
+		}
+
+		$scope.populateTiles();
+
+		var si = setInterval(function() {
+    		$scope.animationClass = "flipInY";
+    		$scope.$apply();
+    	}, 1000);
+
+		var sin = setInterval(function() {
+			var t = $timeout(function() {
+				$scope.populateTiles();
+			}, 1200);
+		}, 8000);
+
+		var sint = setInterval(function() {
+    		$scope.animationClass = "fadeOut";
+    		$scope.$apply();
+    	}, 8000);
+
   	});
