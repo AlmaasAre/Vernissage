@@ -5,39 +5,32 @@ app
 
     	$scope.contents = [];
 
+      //Create a fake and random array of contents
     	function createArray() {
 
-    		for(var i = 0; i < 25; i++) {
+    		  for(var i = 0; i < 25; i++) {
 
-    			if(Math.floor((Math.random()*3)+1) === 1)
-    			{
-    				  $scope.contents.push({
-                  id:i,
-                  url: 'http://www.w3schools.com/html/mov_bbb.mp4',
-                  video: true
-              });
-    			}
+        			if(Math.floor((Math.random()*3)+1) === 1)
+        			{
+        				  $scope.contents.push({
+                      id:i,
+                      url: 'http://www.w3schools.com/html/mov_bbb.mp4',
+                      video: true
+                  });
+        			}
 
-    			else
-    			{
-    				  $scope.contents.push({
-                id:i,
-                url: 'http://placekitten.com/320/180'
-              });
-    			}
-    		}
-
-	    	// var videoes = document.getElementsByClassName("video");
-
-	    	// console.log(videoes);
-
-	    	// for(var j = 0; j < videoes.length; j++) {
-
-	    	// 	console.log("play " + j);
-	    	// 	// videoes[j].play();
-	    	// }
+        			else
+        			{
+        				  $scope.contents.push({
+                      id:i,
+                      url: 'http://placekitten.com/320/180'
+                  });
+        			}
+    		  }
     	}
 
     	createArray();
+
+      //END fake and random array
 
   	});
