@@ -1,9 +1,35 @@
 'use strict';
 
 app
-  	.controller('SocialCtrl', function ($scope, $timeout) {
+  	.controller('SocialCtrl', function ($scope, $timeout, $http) {
 
-    	$scope.contents = [];
+      $scope.contents = [];
+
+      $scope.employeeDataUrl = "/scripts/data/employees.json";
+      $scope.people = [];
+
+      $http.get($scope.employeeDataUrl).then(function(response) {
+        $scope.people = response.data;
+        
+        // for (var i = 3; i <= 23; i++) {
+        //   console.log($scope.people[i]);
+
+        //   var content = {
+        //     id: i,
+        //     url: $scope.people[i].picture,
+        //     info: {
+        //       title: $scope.people[i].displayname,
+        //       text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, soluta!"
+        //     }
+        //   }
+
+        //   $scope.contents.push(content);
+        // }
+
+        createArray();
+
+      });
+
 
       // $scope.zoom = false;
 
@@ -71,7 +97,7 @@ app
                   {
             				  $scope.contents.push({
                           id: i,
-                          url: 'http://placekitten.com/1280/720'
+                          url: $scope.people[i].picture
                       });
                   }
 
@@ -79,15 +105,13 @@ app
                   {
                       $scope.contents.push({
                           id: i,
-                          url: 'http://placekitten.com/1280/720',
+                          url: 'http://placekitten.com/1080/750',
                           info: info
                       });
                   }
         			}
     		  }
     	}
-
-    	createArray();
 
       //END fake and random array
 

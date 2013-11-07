@@ -15,12 +15,12 @@ app
 
       $scope.getData = function(){
         $http.get($scope.addedDataUrl).then(function(response) {
-              $scope.addedData = response.data;
-              console.log(response.data);
+          $scope.addedData = response.data;
+          console.log(response.data);
 
-              $http.get($scope.employeeDataUrl).then(function(secondResponse) {
-                $scope.people = secondResponse.data;
-                $scope.populateTiles();
+          $http.get($scope.employeeDataUrl).then(function(secondResponse) {
+            $scope.people = secondResponse.data;
+            $scope.populateTiles();
           });
         });
       };

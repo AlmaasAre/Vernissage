@@ -11,6 +11,11 @@ app
       		restrict: 'A',
       		link: function postLink(scope, element, attrs) {
 
+                /*
+                    Crazy jQuery stuff
+                */
+                // adjustImages();
+
                 var id = attrs.id;
 
                 var el = element[0];
@@ -26,6 +31,27 @@ app
 
                 function hide() {
                     parent.classList.remove("show");
+                }
+
+                /*
+                    Crazy jQuery stuff
+                */
+                function adjustImages() {
+                    $('img').each(function(index) {
+                        var height = $(this).height();
+                        var width = $(this).width();
+
+                        console.log(height);
+                        console.log(width);
+
+                        if (width < height) {
+                            $(this).height('100%');
+                            $(this).width('auto');
+                        } else {
+                            $(this).width('100%');
+                            $(this).height('auto');
+                        }
+                    });
                 }
 
                 if(video)
@@ -102,6 +128,11 @@ app
 
 
     			$rootScope.$on('Show', function(event, item) {
+
+                     /*
+                        Crazy jQuery stuff
+                    */
+                    // adjustImages();
 
                     if(item == id)
                     {
