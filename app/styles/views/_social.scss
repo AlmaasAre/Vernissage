@@ -31,8 +31,7 @@
 		.info {
 			position: absolute;
 			height: 100%;
-			width: 100%;
-			overflow: hidden;
+			width: 95%;
 			top: 0;
 			left: 0;
 			padding: 1em;
@@ -41,6 +40,14 @@
 			z-index: -1;
 			transform: translateX(0%);
 			opacity: 0;
+
+			&::before {
+				content: "";
+				border-top: 20px solid transparent;
+				border-bottom: 20px solid transparent;
+				position: absolute;
+				top: 37.5%;
+			}
 
 			.title {
 				margin: 0;
@@ -67,14 +74,26 @@
 
 		&.show {
 			.info {
-				transform: translateX(100%);
+				transform: translateX(110%);
+
+				&::before {
+					border-right: 20px solid white;
+					left: -5%;
+				}
 			}
 		}
 
 		&:nth-of-type(#{$grid + "n"}) {
 			&.show {
 				.info {
-					transform: translateX(-100%);
+					transform: translateX(-105%);
+
+					&::before {
+						border-right: none;
+						border-left: 20px solid white;
+						right: -5%;
+						left: auto;;
+					}
 				}
 			}
 		}
