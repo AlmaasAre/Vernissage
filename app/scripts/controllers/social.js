@@ -44,6 +44,11 @@ app
 
           var grid = 5;
 
+          var info = {
+              title: "Test title",
+              text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum libero omnis accusamus asperiores iste voluptates magnam. Alias, quia, fugiat, dolore nihil similique illo nesciunt et accusantium modi tenetur asperiores iusto."
+          };
+
           var numberOfContents = grid*grid;
 
     		  for(var i = 0; i < numberOfContents; i++) {
@@ -53,7 +58,8 @@ app
         				  $scope.contents.push({
                       id: i,
                       url: 'http://www.w3schools.com/html/mov_bbb.mp4',
-                      video: true
+                      video: true,
+                      info: info
                   });
         			}
 
@@ -61,7 +67,8 @@ app
         			{
         				  $scope.contents.push({
                       id: i,
-                      url: 'http://placekitten.com/1280/720'
+                      url: 'http://placekitten.com/1280/720',
+                      info: info
                   });
         			}
     		  }
