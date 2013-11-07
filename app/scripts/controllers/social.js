@@ -105,7 +105,7 @@ app
                   {
                       $scope.contents.push({
                           id: i,
-                          url: 'http://placekitten.com/1080/750',
+                          url: 'http://lorempixel.com/400/400/people/',
                           info: info
                       });
                   }

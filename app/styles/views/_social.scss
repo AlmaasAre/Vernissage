@@ -21,6 +21,17 @@
 		// background-color: black;
 		transition: all 200ms;
 
+		&.identity {
+			background: $color-pink;
+
+			.logo {
+				position: absolute;
+				right: 7em;
+				bottom: 4.2em;
+				width: 170px;
+			}
+		}
+
 		//Restrict the video element from overflowing
 		.content-restrictor {
 			width: 100%;
