@@ -1,15 +1,17 @@
 <div class="cv">
 	<div ng-repeat="tile in selectedTiles track by $index" class="tile-wrapper animated" ng-class="animationClass">
-		<img class="image" ng-src="{{tile.img || '/images/cv-placeholder.jpeg'}}" alt="{{tile.name}}">
+		<img class="image" ng-src="{{tile.picture || '/images/cv-placeholder.jpeg'}}" alt="{{tile.name}}">
 		<div class="tile-inner">
-			<h1 class="title" ng-class="{available: tile.available}">{{tile.name}} {{tile.number}}</h1>
-			<span class="dep" ng-show="tile.dep">{{tile.dep}}, </span>
-			<span class="dep" ng-show="tile.job">{{tile.job}}</span>
+			<h1 class="title" ng-class="{available: tile.available}">{{tile.displayname}}</h1>
+			<span class="dep" ng-show="tile.department">{{tile.department}}</span>
+			<span class="dep" ng-show="tile.job"> - </span>
 
-			<h2>Current activities</h2>
-			<p>{{tile.custom}}</p>
+			<div ng-show="tile.customText">
+				<h2>Current activities</h2>
+				<p>{{tile.customText}}</p>
+			</div>
 
-			<div class="projects">
+			<div class="projects" ng-show="tile.projects">
 				<h2 >Projects</h2>
 				<span class="project" ng-repeat="p in tile.projects">{{p}}</span>
 			</div>

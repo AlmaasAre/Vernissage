@@ -13,7 +13,7 @@ app
 	    	},
 	    	{
 	    		date: "Next sunday",
-	    		title: "Somehting that will happen then"
+	    		title: "Something that will happen then"
 	    	}
     	];
 

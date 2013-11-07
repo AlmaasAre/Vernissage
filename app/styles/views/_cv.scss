@@ -12,8 +12,8 @@
 -------------------------------- */
 .cv .tile-wrapper {
 	position: relative;
-	width: $tileWidth - ($gutter*2);
-	height: $tileHeight - ($gutter*2);
+	width: $tileWidth - ($gutter*2.5);
+	height: $tileHeight - ($gutter*2.5);
 	box-sizing: border-box;
 	float: left;
 	margin: $gutter;

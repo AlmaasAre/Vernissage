@@ -1,166 +1,93 @@
 'use strict';
 
 app
-  	.controller('CvCtrl', function ($scope, $timeout) {
-    	$scope.animationClass = "flipInY";
+    .controller('CvCtrl', function ($scope, $timeout, $http) {
+      $scope.animationClass = "flipInY";
 
-    	$scope.people = [
-      		{
-      			name: 'Helge Standal',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_a504b03dedf0e0c7407eb3d88404c7783a6dfeea.jpg',
-      			job: 'Title',
-      			available: true,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, incidunt.',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Are Almaas',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_fcd69278309385eb145351f8e4a4c3eef092e4ef.jpg',
-      			job: 'Title',
-      			available: false,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, placeat.',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Asbjørn Vølstad',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_3fb7e5d8697057f204b25b950986a603ec3d3099.jpg',
-      			job: 'Title',
-      			available: true,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, eaque!',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Adam Dziawgo',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_6737384905f2e70149dafe29df7388009474f10b.jpg',
-      			job: 'Title',
-      			available: false,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, magnam.',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Andreas Fjellstad Dahle',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_f93b09e1b15dd0df09831e689f15458a8706605e.jpg',
-      			job: 'Title',
-      			available: false,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, exercitationem!',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Dominik Juszczyk',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_a76a040a427077e0452dc6f3231c992ea45c462d.jpg',
-      			job: 'Title',
-      			available: true,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, explicabo.',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		},
-      		{
-      			name: 'Arne Bakkebø',
-      			dep: 'Department',
-      			img: 'http://labs.makingwaves.com/customer/internal/employees/data/img/2x_1a8fbec45f4efe81d3ef88bb76919856771bd91c.jpg',
-      			job: 'Title',
-      			available: true,
-      			custom: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, totam.',
-      			projects: [
-      				'Vernissage',
-      				'Statens Kartverk',
-      				'Haavind',
-      				'Internal'
-      			]
-      		}
-    	];
+      $scope.employeeDataUrl = "/scripts/data/employees.json";
+      $scope.addedDataUrl = "/scripts/data/addedData.json";
+      $scope.people = [];
+      $scope.addedData = [];
 
-    	$scope.tiles = [];
-    	$scope.tmpNewPeople = [];
-		$scope.newPeople = [];
-		$scope.selectedTiles = [];
-		$scope.populateCount = 0;
+      // titles: [ "Vernissage", "Et annet prosjekt" ],
+      // customText: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, earum!",
+      // available: true
 
-    	function shuffle(o) { //v1.0
-		    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-	    	// console.log("** Shuffled. **");
-		    return o;
-		};
+      $scope.getData = function(){
+        $http.get($scope.addedDataUrl).then(function(response) {
+              $scope.addedData = response.data;
+              console.log(response.data);
 
-		$scope.populateTiles = function() {
-			$scope.populateCount++;
-			$scope.selectedTiles = [];
+              $http.get($scope.employeeDataUrl).then(function(secondResponse) {
+                $scope.people = secondResponse.data;
+                $scope.populateTiles();
+          });
+        });
+      };
 
-			if ($scope.populateCount % 10 == 0 || $scope.populateCount == 1) {
-				$scope.newPeople = [];
-				$scope.tmpNewPeople = [];
+      $scope.getData();
 
-				for (var i = 0; i < $scope.people.length; i++) {
-					$scope.tmpNewPeople.push($scope.people[i]);
-				}
+      $scope.tiles = [];
+      $scope.tmpNewPeople = [];
+      $scope.newPeople = [];
+      $scope.selectedTiles = [];
+      $scope.populateCount = 0;
+      var addProjects;
 
-				// console.log("** Kjørt gjennom alle people **");
-			}
+      function shuffle(o) {
+        for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
+      };
 
-			$scope.newPeople = shuffle($scope.tmpNewPeople);
+      $scope.populateTiles = function() {
+        $scope.populateCount++;
+        $scope.selectedTiles = [];
+        addProjects = [];
 
-			for (var i = 0; i < 8; i++) {
-				$scope.selectedTiles.push($scope.newPeople[i]);
-			}
+        if ($scope.populateCount % 10 == 0 || $scope.populateCount == 1) {
+          $scope.newPeople = [];
+          $scope.tmpNewPeople = [];
 
-			// console.log("Populate count: " + $scope.populateCount);
-			// console.log("Selected tiles: " + $scope.selectedTiles.length);
-			// console.log("Tmp new people: " + $scope.tmpNewPeople.length);
-			// console.log("New people: " + $scope.newPeople.length);
-			// console.log("People: " + $scope.people.length);
-		}
+          for (var i = 0; i < $scope.people.length; i++) {
+            $scope.tmpNewPeople.push($scope.people[i]);
+          }
+        }
 
-		$scope.populateTiles();
+        $scope.newPeople = shuffle($scope.tmpNewPeople);
 
-		var si = setInterval(function() {
-    		$scope.animationClass = "flipInY";
-    		$scope.$apply();
-    	}, 1000);
+        for (var i = 0; i < 8; i++) {
+          addProjects = [];
 
-		var sin = setInterval(function() {
-			var t = $timeout(function() {
-				$scope.populateTiles();
-			}, 1200);
-		}, 8000);
+          for (var j = 0; j < $scope.addedData[0].projects.length; j++) {
 
-		var sint = setInterval(function() {
-    		$scope.animationClass = "fadeOut";
-    		$scope.$apply();
-    	}, 8000);
+            if ($scope.addedData[0].projects[j].mail === $scope.newPeople[i].mail) {
+              for (var k = 0; k < $scope.addedData[0].projects[j].titles.length; k++) {
+                addProjects.push($scope.addedData[0].projects[j].titles[k]);
+              }
+              $scope.newPeople[i].available = $scope.addedData[0].projects[j].available;
+              $scope.newPeople[i].customText = $scope.addedData[0].projects[j].customText;
+            }
+          }
 
-  	});
+          $scope.newPeople[i].projects = addProjects;
+          $scope.selectedTiles.push($scope.newPeople[i]);
+        }
+      }
+
+      var si = setInterval(function() {
+          $scope.animationClass = "flipInY";
+          $scope.$apply();
+        }, 1000);
+
+      var sin = setInterval(function() {
+        var t = $timeout(function() {
+          $scope.populateTiles();
+        }, 1200);
+      }, 12000);
+
+      var sint = setInterval(function() {
+          $scope.animationClass = "fadeOut";
+          $scope.$apply();
+        }, 12000);
+
+      });
