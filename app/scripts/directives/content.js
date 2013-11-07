@@ -63,33 +63,41 @@ app
 
                 else
                 {
-                    el.addEventListener('load', function() {
+                    if(scope.content.info)
+                    {
+                        el.addEventListener('load', function() {
 
-                        if(!Items.getPlaying())
-                        {
-                            console.log('Image init');
-                            Items.setPlaying(true);
-                            show();
+                            if(!Items.getPlaying())
+                            {
+                                console.log('Image init');
+                                Items.setPlaying(true);
+                                show();
 
-                            Items.queueItem(id);
-
-                            setTimeout(function() {
-                                hide();
+                                Items.queueItem(id);
 
                                 setTimeout(function() {
-                                    parent.classList.remove("animate");
-                                    Items.nextItem();
-                                }, 200);
+                                    hide();
 
-                            }, 2000);
-                        }
+                                    setTimeout(function() {
+                                        parent.classList.remove("animate");
+                                        Items.nextItem();
+                                    }, 200);
 
-                        else
-                        {
-                            Items.queueItem(id);
-                        }
+                                }, 2000);
+                            }
 
-                    });
+                            else
+                            {
+                                Items.queueItem(id);
+                            }
+
+                        });
+                    }
+
+                    else
+                    {
+                        console.log("Skipped image without info.");
+                    }
                 }
 
 

@@ -65,11 +65,24 @@ app
 
         			else
         			{
-        				  $scope.contents.push({
-                      id: i,
-                      url: 'http://placekitten.com/1280/720',
-                      info: info
-                  });
+                  var bool = (Math.floor((Math.random()*2)+1) === 1)
+
+                  if(bool)
+                  {
+            				  $scope.contents.push({
+                          id: i,
+                          url: 'http://placekitten.com/1280/720'
+                      });
+                  }
+
+                  else
+                  {
+                      $scope.contents.push({
+                          id: i,
+                          url: 'http://placekitten.com/1280/720',
+                          info: info
+                      });
+                  }
         			}
     		  }
     	}
