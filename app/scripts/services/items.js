@@ -33,6 +33,7 @@ app
 
             if(_next === _queue.length)
             {
+                console.log("All items shown, shuffling array and restarting.");
                 _next = 0;
 
                 _queue = shuffle(_queue);

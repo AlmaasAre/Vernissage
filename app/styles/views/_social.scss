@@ -6,10 +6,6 @@
 	transform: scale(1);
 	transition: transform 1000ms;
 
-	// &.zoom {
-	// 	transform: scale(7.5) translate(120px, 69px);
-	// }
-
 	.content-container {
 		$grid: 5;
 		font-size: 1rem;
@@ -21,6 +17,15 @@
 		position: relative;
 		overflow: hidden;
 		transform: translateZ(0);
+		background-color: black;
+
+		//Restrict the video element from overflowing
+		.content-restrictor {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			position: relative;
+		}
 
 		.info {
 			position: absolute;
@@ -35,6 +40,14 @@
 			z-index: -1;
 			transform: translateX(0%);
 			opacity: 0;
+
+			.title {
+				margin: 0;
+			}
+
+			.text {
+				margin-top: .25em;
+			}
 		}
 
 		&.animate {
@@ -44,11 +57,23 @@
 			.info {
 				opacity: 1;
 			}
+
+			.content {
+				opacity: 1;
+			}
 		}
 
 		&.show {
 			.info {
 				transform: translateX(100%);
+			}
+		}
+
+		&:nth-of-type(5n) {
+			&.show {
+				.info {
+					transform: translateX(-100%);
+				}
 			}
 		}
 	}
@@ -58,6 +83,8 @@
 		display: block;
 		height: 100%;
 		user-select: none;
-		transform: translateZ(0);
+		// transform: translateZ(0);
+		opacity: .5;
+		transition: opacity 200ms ease;
 	}
 }

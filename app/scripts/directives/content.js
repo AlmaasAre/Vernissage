@@ -11,19 +11,21 @@ app
       		restrict: 'A',
       		link: function postLink(scope, element, attrs) {
 
-                var id = scope.content.id;
+                var id = attrs.id;
 
                 var el = element[0];
+
+                var parent = el.parentNode.parentNode;
 
                 var video = (el.tagName === 'VIDEO');
 
                 function show() {
-                    el.parentNode.classList.add("show");
-                    el.parentNode.classList.add("animate");
+                    parent.classList.add("show");
+                    parent.classList.add("animate");
                 }
 
                 function hide() {
-                    el.parentNode.classList.remove("show");
+                    parent.classList.remove("show");
                 }
 
                 if(video)
@@ -53,7 +55,7 @@ app
                         hide();
 
                         setTimeout(function() {
-                            el.parentNode.classList.remove("animate");
+                            parent.classList.remove("animate");
                             Items.nextItem();
                         }, 200);
         			});
@@ -75,7 +77,7 @@ app
                                 hide();
 
                                 setTimeout(function() {
-                                    el.parentNode.classList.remove("animate");
+                                    parent.classList.remove("animate");
                                     Items.nextItem();
                                 }, 200);
 
@@ -100,7 +102,10 @@ app
                         if(video)
                         {
                             show();
-                            el.play();
+
+                            setTimeout(function() {
+                                el.play();
+                            }, 200);
                         }
 
                         else
@@ -111,7 +116,7 @@ app
                                 hide();
 
                                 setTimeout(function() {
-                                    el.parentNode.classList.remove("animate");
+                                    parent.classList.remove("animate");
                                     Items.nextItem();
                                 }, 200);
 

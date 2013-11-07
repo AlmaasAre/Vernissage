@@ -1,9 +1,14 @@
 <div class="social">
 	<div ng-repeat="content in contents" class="content-container" ng-click="zoom($event)">
 		<div class="info">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ex, dolores, quisquam, cum ipsam veritatis odio provident veniam maxime sunt beatae doloribus? Tempora sapiente non natus illo vitae blanditiis ut.
+			<h1 class="title">Test Title</h1>
+			<p class="text">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ex, dolores, quisquam, cum ipsam veritatis odio provident veniam maxime sunt beatae doloribus? Tempora sapiente non natus illo vitae blanditiis ut.
+			</p>
 		</div>
-		<img class="content" ng-if="!content.video" ng-src="{{content.url}}" content="content" content-directive>
-		<video class="content video" ng-if="content.video" ng-src="{{content.url}}" id="{{content.id}}" content="content" content-directive></video>
+		<div class="content-restrictor">
+			<img class="content" ng-if="!content.video" ng-src="{{content.url}}" id="{{content.id}}" content="content" content-directive>
+			<video class="content video" ng-if="content.video" ng-src="{{content.url}}" id="{{content.id}}" content="content" content-directive></video>
+		</div>
 	</div>
 </div>
