@@ -1,7 +1,7 @@
 'use strict';
 
 app
-  	.factory('Video', function Video($rootScope) {
+  	.factory('Items', function Items($rootScope) {
 
     	var _playing = false;
     	var _next = 0;
@@ -18,32 +18,35 @@ app
     	}
 
     	var _setPlaying = function(val) {
+            _queue = shuffle(_queue);
     		_playing = val;
     	}
 
-    	var _queueVideo = function(id) {
+    	var _queueItem = function(id) {
+            // console.log("QUEUE", id);
     		_queue.push(id);
     	}
 
-    	var _finished = function() {
+    	var _nextItem = function() {
     		_next++;
             // console.log("NEXT",  _queue[_next]);
 
             if(_next === _queue.length)
             {
+                console.log("All items shown, shuffling array and restarting.");
                 _next = 0;
 
                 _queue = shuffle(_queue);
             }
 
-
-            $rootScope.$broadcast('Video', _queue[_next]);
+            console.log("QUEUE", _queue, _next);
+            $rootScope.$broadcast('Show', _queue[_next]);
     	}
 
     	return {
     		setPlaying: _setPlaying,
     		getPlaying: _getPlaying,
-    		queueVideo: _queueVideo,
-    		finished: _finished
+    		queueItem: _queueItem,
+    		nextItem: _nextItem
     	}
   	});

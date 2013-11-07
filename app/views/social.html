@@ -1,6 +1,14 @@
-<div class="social" ng-class="{zoom: zoom}">
+<div class="social">
 	<div ng-repeat="content in contents" class="content-container" ng-click="zoom($event)">
-		<img class="content" ng-if="!content.video" ng-src="{{content.url}}">
-		<play content="content" zoom="zoom" ng-if="content.video"></play>
+		<div class="info" ng-if="content.info">
+			<h1 class="title">{{content.info.title}}</h1>
+			<p class="text">
+				{{content.info.text}}
+			</p>
+		</div>
+		<div class="content-restrictor">
+			<img class="content" ng-if="!content.video" ng-src="{{content.url}}" id="{{content.id}}" content="content" content-directive>
+			<video class="content video" ng-if="content.video" ng-src="{{content.url}}" id="{{content.id}}" content="content" content-directive></video>
+		</div>
 	</div>
 </div>
