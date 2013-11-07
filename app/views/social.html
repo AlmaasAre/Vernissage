@@ -1,6 +1,6 @@
 <div class="social">
 	<div ng-repeat="content in contents" class="content-container" ng-click="zoom($event)">
-		<div class="info">
+		<div class="info" ng-if="content.info">
 			<h1 class="title">{{content.info.title}}</h1>
 			<p class="text">
 				{{content.info.text}}
