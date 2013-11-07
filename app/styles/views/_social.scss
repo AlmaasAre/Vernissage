@@ -6,8 +6,9 @@
 	transform: scale(1);
 	transition: transform 1000ms;
 
+	$grid: 5;
+
 	.content-container {
-		$grid: 5;
 		font-size: 1rem;
 		width: 100% / $grid;
 		height: 100% / $grid;
@@ -70,7 +71,7 @@
 			}
 		}
 
-		&:nth-of-type(5n) {
+		&:nth-of-type(#{$grid + "n"}) {
 			&.show {
 				.info {
 					transform: translateX(-100%);
