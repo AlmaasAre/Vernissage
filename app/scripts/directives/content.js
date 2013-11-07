@@ -95,8 +95,6 @@ app
 
     			$rootScope.$on('Show', function(event, item) {
 
-                    console.log(item, id);
-
                     if(item == id)
                     {
                         if(video)
