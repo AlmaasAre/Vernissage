@@ -42,14 +42,14 @@ app
       //Create a fake and random array of contents
     	function createArray() {
 
-          var grid = 5;
+          var grid = 4;
 
           var info = {
               title: "Test title",
               text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum libero omnis accusamus asperiores iste voluptates magnam. Alias, quia, fugiat, dolore nihil similique illo nesciunt et accusantium modi tenetur asperiores iusto."
           };
 
-          var numberOfContents = grid*grid;
+          var numberOfContents = grid*(grid+1);
 
     		  for(var i = 0; i < numberOfContents; i++) {
 
