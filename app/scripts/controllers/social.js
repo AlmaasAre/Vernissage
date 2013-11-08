@@ -5,38 +5,37 @@ app
 
       $scope.contents = [];
 
-      $scope.employeeDataUrl = "/scripts/data/employees.json";
-      $scope.people = [];
+      $scope.instagramDataUrl = "https://api.instagram.com/v1/users/6805920/media/recent/?access_token=9105191.1fb234f.6c8ebcb04cad4b39b1c3e340b55d514b";
+      $scope.instagramElements = [];
 
-      $http.get($scope.employeeDataUrl).then(function(response) {
-        $scope.people = response.data;
-
+      $http.get($scope.instaDataUrl).then(function(response) {
+        $scope.instagramElements = response.data;
+        console.log($scope.instagramElements);
         createArray();
-
       });
 
-      $scope.images = [
-        "http://distilleryimage0.s3.amazonaws.com/f2813d0847d311e3ab6f0e5773f5d485_8.jpg",
-        "http://distilleryimage1.s3.amazonaws.com/a88cc98847c911e393790a2aba0db6c1_8.jpg",
-        "http://distilleryimage3.s3.amazonaws.com/70210da0431b11e3b0ac22000ab780a6_8.jpg",
-        "http://distilleryimage10.s3.amazonaws.com/cbb87446425311e39da122000a9e28e0_8.jpg",
-        "http://distilleryimage11.s3.amazonaws.com/7529c3e63da311e3a0b722000ae911ee_8.jpg",
-        "http://distilleryimage4.s3.amazonaws.com/caa016e83d8211e38c3f22000ae800af_8.jpg",
-        "http://distilleryimage10.s3.amazonaws.com/c22f98ca3a3611e3961e22000aa81fac_7.jpg",
-        "http://distilleryimage0.s3.amazonaws.com/d2c20f0e3a3311e399bc22000aeb0b9f_8.jpg",
-        "http://distilleryimage0.s3.amazonaws.com/2b1fd11a318b11e3aaec22000a1faf7c_8.jpg",
-        "http://distilleryimage2.s3.amazonaws.com/ff3ccecc2f3c11e3bafe22000a9e1853_8.jpg",
-        "http://distilleryimage3.s3.amazonaws.com/a0d730be163911e3b0b61231390e4476_7.jpg",
-        "http://distilleryimage6.s3.amazonaws.com/0b8dc09e14d711e3a7f322000a1f9a55_7.jpg",
-        "http://distilleryimage10.s3.amazonaws.com/517a940813b811e3a6b122000a9f3070_7.jpg",
-        "http://distilleryimage0.s3.amazonaws.com/dc92bda2df1211e292eb22000a1fbd89_7.jpg",
-        "http://distilleryimage4.s3.amazonaws.com/e24ee31ad3ff11e29cc822000a1f96e3_7.jpg",
-        "http://distilleryimage5.s3.amazonaws.com/4848707887d411e2a8e322000a9f13d9_7.jpg",
-        "http://distilleryimage3.s3.amazonaws.com/eadcc6cc7c4911e2902122000a9e5160_7.jpg",
-        "http://distilleryimage2.s3.amazonaws.com/6b74ad8a5aef11e2aaa822000a1fb0dd_7.jpg",
-        "http://distilleryimage4.s3.amazonaws.com/f94c21a4672111e2843f22000a9e0722_7.jpg",
-        "http://distilleryimage7.s3.amazonaws.com/eab0c666bbb011e2bcaf22000a1fbcb3_7.jpg"
-      ];
+      // $scope.images = [
+      //   "http://distilleryimage0.s3.amazonaws.com/f2813d0847d311e3ab6f0e5773f5d485_8.jpg",
+      //   "http://distilleryimage1.s3.amazonaws.com/a88cc98847c911e393790a2aba0db6c1_8.jpg",
+      //   "http://distilleryimage3.s3.amazonaws.com/70210da0431b11e3b0ac22000ab780a6_8.jpg",
+      //   "http://distilleryimage10.s3.amazonaws.com/cbb87446425311e39da122000a9e28e0_8.jpg",
+      //   "http://distilleryimage11.s3.amazonaws.com/7529c3e63da311e3a0b722000ae911ee_8.jpg",
+      //   "http://distilleryimage4.s3.amazonaws.com/caa016e83d8211e38c3f22000ae800af_8.jpg",
+      //   "http://distilleryimage10.s3.amazonaws.com/c22f98ca3a3611e3961e22000aa81fac_7.jpg",
+      //   "http://distilleryimage0.s3.amazonaws.com/d2c20f0e3a3311e399bc22000aeb0b9f_8.jpg",
+      //   "http://distilleryimage0.s3.amazonaws.com/2b1fd11a318b11e3aaec22000a1faf7c_8.jpg",
+      //   "http://distilleryimage2.s3.amazonaws.com/ff3ccecc2f3c11e3bafe22000a9e1853_8.jpg",
+      //   "http://distilleryimage3.s3.amazonaws.com/a0d730be163911e3b0b61231390e4476_7.jpg",
+      //   "http://distilleryimage6.s3.amazonaws.com/0b8dc09e14d711e3a7f322000a1f9a55_7.jpg",
+      //   "http://distilleryimage10.s3.amazonaws.com/517a940813b811e3a6b122000a9f3070_7.jpg",
+      //   "http://distilleryimage0.s3.amazonaws.com/dc92bda2df1211e292eb22000a1fbd89_7.jpg",
+      //   "http://distilleryimage4.s3.amazonaws.com/e24ee31ad3ff11e29cc822000a1f96e3_7.jpg",
+      //   "http://distilleryimage5.s3.amazonaws.com/4848707887d411e2a8e322000a9f13d9_7.jpg",
+      //   "http://distilleryimage3.s3.amazonaws.com/eadcc6cc7c4911e2902122000a9e5160_7.jpg",
+      //   "http://distilleryimage2.s3.amazonaws.com/6b74ad8a5aef11e2aaa822000a1fb0dd_7.jpg",
+      //   "http://distilleryimage4.s3.amazonaws.com/f94c21a4672111e2843f22000a9e0722_7.jpg",
+      //   "http://distilleryimage7.s3.amazonaws.com/eab0c666bbb011e2bcaf22000a1fbcb3_7.jpg"
+      // ];
 
 
       // $scope.zoom = false;
@@ -78,46 +77,80 @@ app
 
           var grid = 4;
 
-          var info = {
-              title: "Test title",
-              text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum libero omnis accusamus asperiores iste voluptates magnam. Alias, quia, fugiat, dolore nihil similique illo nesciunt et accusantium modi tenetur asperiores iusto."
-          };
+          // var info = {
+          //     title: "Test title",
+          //     text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum libero omnis accusamus asperiores iste voluptates magnam. Alias, quia, fugiat, dolore nihil similique illo nesciunt et accusantium modi tenetur asperiores iusto."
+          // };
 
           var numberOfContents = grid*(grid+1);
 
-    		  for(var i = 0; i < numberOfContents; i++) {
+    		  for (var i = 0; i < numberOfContents; i++) {
 
-        			if(Math.floor((Math.random()*5)+1) === 1)
-        			{
-        				  $scope.contents.push({
+        			// if(Math.floor((Math.random()*5)+1) === 1)
+        			// {
+        			// 	  $scope.contents.push({
+           //            id: i,
+           //            url: 'http://www.w3schools.com/html/mov_bbb.mp4',
+           //            video: true,
+           //            info: info
+           //        });
+        			// }
+
+        			// else
+        			// {
+           //        var bool = (Math.floor((Math.random()*2)+1) === 1)
+
+           //        if(bool)
+           //        {
+                      
+           //        }
+
+           //        else
+           //        {
+           //            $scope.contents.push({
+           //                id: i,
+           //                url: $scope.instagramElements[i],
+           //                info: info
+           //            });
+           //        }
+        			// }
+
+            var element = $scope.instagramElements[i];
+
+            var info = {
+              title: element.caption.created_time,
+              text: element.caption.text
+            }
+
+            if (element.type === "video") {
+                console.log("Video " + i);
+                if (element.caption.text === "") {
+                  $scope.contents.push({
                       id: i,
-                      url: 'http://www.w3schools.com/html/mov_bbb.mp4',
-                      video: true,
+                      url: element.videos.standard_resolution.url
+                  });
+                } else {
+                  $scope.contents.push({
+                      id: i,
+                      url: element.videos.standard_resolution.url,
                       info: info
                   });
-        			}
-
-        			else
-        			{
-                  var bool = (Math.floor((Math.random()*2)+1) === 1)
-
-                  if(bool)
-                  {
-            				  $scope.contents.push({
-                          id: i,
-                          url: $scope.images[i]
-                      });
-                  }
-
-                  else
-                  {
-                      $scope.contents.push({
-                          id: i,
-                          url: $scope.images[i],
-                          info: info
-                      });
-                  }
-        			}
+                }
+              } else {
+                console.log("Image " + i);
+                if (element.caption.text === "") {
+                  $scope.contents.push({
+                      id: i,
+                      url: element.images.standard_resolution.url
+                  });
+                } else {
+                  $scope.contents.push({
+                      id: i,
+                      url: element.images.standard_resolution.url,
+                      info: info
+                  });
+                }
+              }
     		  }
     	}
 
