@@ -36,8 +36,6 @@ app
     		$('.news-inner').css('margin-top', (($('.news-inner').outerHeight()/2)*-1)-35);
     	}
 
-        // $scope.initNews();
-
     	var si = setInterval(function() {
             $scope.initNews();
     	}, $scope.newsItemLength);
