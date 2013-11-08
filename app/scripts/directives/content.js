@@ -161,6 +161,14 @@ app
                         }
                     }
     			});
+
+                scope.$on('$destroy', function() {
+                    if(video)
+                    {
+                        console.log('PAUSED');
+                        el.stop();
+                    }
+                });
       		}
     	};
 	});
