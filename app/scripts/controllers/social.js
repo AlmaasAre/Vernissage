@@ -15,6 +15,29 @@ app
 
       });
 
+      $scope.images = [
+        "http://distilleryimage0.s3.amazonaws.com/f2813d0847d311e3ab6f0e5773f5d485_8.jpg",
+        "http://distilleryimage1.s3.amazonaws.com/a88cc98847c911e393790a2aba0db6c1_8.jpg",
+        "http://distilleryimage3.s3.amazonaws.com/70210da0431b11e3b0ac22000ab780a6_8.jpg",
+        "http://distilleryimage10.s3.amazonaws.com/cbb87446425311e39da122000a9e28e0_8.jpg",
+        "http://distilleryimage11.s3.amazonaws.com/7529c3e63da311e3a0b722000ae911ee_8.jpg",
+        "http://distilleryimage4.s3.amazonaws.com/caa016e83d8211e38c3f22000ae800af_8.jpg",
+        "http://distilleryimage10.s3.amazonaws.com/c22f98ca3a3611e3961e22000aa81fac_7.jpg",
+        "http://distilleryimage0.s3.amazonaws.com/d2c20f0e3a3311e399bc22000aeb0b9f_8.jpg",
+        "http://distilleryimage0.s3.amazonaws.com/2b1fd11a318b11e3aaec22000a1faf7c_8.jpg",
+        "http://distilleryimage2.s3.amazonaws.com/ff3ccecc2f3c11e3bafe22000a9e1853_8.jpg",
+        "http://distilleryimage3.s3.amazonaws.com/a0d730be163911e3b0b61231390e4476_7.jpg",
+        "http://distilleryimage6.s3.amazonaws.com/0b8dc09e14d711e3a7f322000a1f9a55_7.jpg",
+        "http://distilleryimage10.s3.amazonaws.com/517a940813b811e3a6b122000a9f3070_7.jpg",
+        "http://distilleryimage0.s3.amazonaws.com/dc92bda2df1211e292eb22000a1fbd89_7.jpg",
+        "http://distilleryimage4.s3.amazonaws.com/e24ee31ad3ff11e29cc822000a1f96e3_7.jpg",
+        "http://distilleryimage5.s3.amazonaws.com/4848707887d411e2a8e322000a9f13d9_7.jpg",
+        "http://distilleryimage3.s3.amazonaws.com/eadcc6cc7c4911e2902122000a9e5160_7.jpg",
+        "http://distilleryimage2.s3.amazonaws.com/6b74ad8a5aef11e2aaa822000a1fb0dd_7.jpg",
+        "http://distilleryimage4.s3.amazonaws.com/f94c21a4672111e2843f22000a9e0722_7.jpg",
+        "http://distilleryimage7.s3.amazonaws.com/eab0c666bbb011e2bcaf22000a1fbcb3_7.jpg"
+      ];
+
 
       // $scope.zoom = false;
 
@@ -82,7 +105,7 @@ app
                   {
             				  $scope.contents.push({
                           id: i,
-                          url: $scope.people[i].picture
+                          url: $scope.images[i]
                       });
                   }
 
@@ -91,7 +114,7 @@ app
                       $scope.contents.push({
                           id: i,
                           // url: 'http://lorempixel.com/400/400/people/',
-                          url: $scope.people[i].picture,
+                          url: $scope.images[i],
                           info: info
                       });
                   }
