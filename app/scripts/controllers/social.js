@@ -10,7 +10,7 @@ app
 
       $http.get($scope.employeeDataUrl).then(function(response) {
         $scope.people = response.data;
-        
+
         createArray();
 
       });
@@ -90,7 +90,8 @@ app
                   {
                       $scope.contents.push({
                           id: i,
-                          url: 'http://lorempixel.com/400/400/people/',
+                          // url: 'http://lorempixel.com/400/400/people/',
+                          url: $scope.people[i].picture,
                           info: info
                       });
                   }
