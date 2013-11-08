@@ -66,6 +66,10 @@ app
               }
               $scope.newPeople[i].available = $scope.addedData[0].projects[j].available;
               $scope.newPeople[i].customText = $scope.addedData[0].projects[j].customText;
+
+              if ($scope.newPeople[i].picture === "http://phone.makingwaves.no/employeepictures/image_missing.png") {
+                $scope.newPeople[i].picture = "/images/cv-placeholder.jpeg";
+              }
             }
           }
 

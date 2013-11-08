@@ -1,6 +1,6 @@
 <div class="cv">
 	<div ng-repeat="tile in selectedTiles track by $index" class="tile-wrapper animated" ng-class="animationClass">
-		<img class="image" ng-src="{{tile.picture || '/images/cv-placeholder.jpeg'}}" alt="{{tile.name}}">
+		<img class="image" ng-src="{{tile.picture}}" alt="{{tile.name}}">
 		<div class="tile-inner">
 			<h1 class="title" ng-class="{available: tile.available}">{{tile.displayname}}</h1>
 			<span class="dep" ng-show="tile.department">{{tile.department}}</span>
