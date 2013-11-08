@@ -11,21 +11,6 @@ app
       $http.get($scope.employeeDataUrl).then(function(response) {
         $scope.people = response.data;
         
-        // for (var i = 3; i <= 23; i++) {
-        //   console.log($scope.people[i]);
-
-        //   var content = {
-        //     id: i,
-        //     url: $scope.people[i].picture,
-        //     info: {
-        //       title: $scope.people[i].displayname,
-        //       text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, soluta!"
-        //     }
-        //   }
-
-        //   $scope.contents.push(content);
-        // }
-
         createArray();
 
       });

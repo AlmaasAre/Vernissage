@@ -5,15 +5,15 @@ app
     	$scope.news = [
 	    	{
 	    		date: "Today",
-	    		title: "Remember the Foosball competition!"
+	    		title: "Remember to sign up for Foosball!"
 	    	},
 	    	{
 	    		date: "Tomorrow",
 	    		title: "Weekend!"
 	    	},
 	    	{
-	    		date: "Next sunday",
-	    		title: "Something that will happen then"
+	    		date: "Next monday",
+	    		title: "Get ready for Movember!"
 	    	}
     	];
 
@@ -36,7 +36,9 @@ app
     		$('.news-inner').css('margin-top', (($('.news-inner').outerHeight()/2)*-1)-35);
     	}
 
+        $scope.initNews();
+
     	var si = setInterval(function() {
-    		$scope.initNews();
+            $scope.initNews();
     	}, $scope.newsItemLength);
   	});

@@ -1,3 +1,54 @@
 .main {
+	background: #fff;
+	width: 100%;
+	height: 100%;
 
+	.logo {
+		position: absolute;
+		width: 800px;
+		height: auto;
+		top: 50%;
+		margin-top: -150px;
+		left: 50%;
+		margin-left: -400px;
+	}
+
+	hr.border-detail {
+		height: 1px;
+		background: $color-pink;
+		border: none;
+		position: absolute;
+		bottom: -100px;
+		left: -10px;
+		width: $screenHeight;
+		transform: rotate(105deg);
+	}
+
+	ul.main-nav {
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+		position: absolute;
+		left: 680px;
+		top: 660px;
+
+		li {
+			margin-bottom: 3px;
+			
+			&:nth-child(1) { margin-left: 0px; }
+			&:nth-child(2) { margin-left: -6px; }
+			&:nth-child(3) { margin-left: -12px; }
+
+			a {
+				text-decoration: none;
+				color: #000;
+				font-size: 18px;
+				font-weight: 300;
+
+				&:hover {
+					color: $color-pink;
+				}
+			}
+		}
+	}
 }

@@ -82,7 +82,7 @@ app
       var sin = setInterval(function() {
         var t = $timeout(function() {
           $scope.populateTiles();
-        }, 1200);
+        }, 1100);
       }, 12000);
 
       var sint = setInterval(function() {
