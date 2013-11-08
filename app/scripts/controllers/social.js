@@ -113,7 +113,6 @@ app
                   {
                       $scope.contents.push({
                           id: i,
-                          // url: 'http://lorempixel.com/400/400/people/',
                           url: $scope.images[i],
                           info: info
                       });

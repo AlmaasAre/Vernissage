@@ -9,10 +9,6 @@ app
       $scope.people = [];
       $scope.addedData = [];
 
-      // titles: [ "Vernissage", "Et annet prosjekt" ],
-      // customText: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, earum!",
-      // available: true
-
       $scope.getData = function(){
         $http.get($scope.addedDataUrl).then(function(response) {
           $scope.addedData = response.data;
