@@ -24,6 +24,8 @@ app
 
                 var video = (el.tagName === 'VIDEO');
 
+                var timers = [];
+
                 function show() {
                     parent.classList.add("show");
                     parent.classList.add("animate");
@@ -80,10 +82,12 @@ app
                         el.currentTime = 0;
                         hide();
 
-                        setTimeout(function() {
+                        var t1 = setTimeout(function() {
                             parent.classList.remove("animate");
                             Items.nextItem();
                         }, 200);
+
+                        timers.push(t1);
         			});
                 }
 
@@ -101,15 +105,19 @@ app
 
                                 Items.queueItem(id);
 
-                                setTimeout(function() {
+                                var t2 = setTimeout(function() {
                                     hide();
 
-                                    setTimeout(function() {
+                                    var t3 = setTimeout(function() {
                                         parent.classList.remove("animate");
                                         Items.nextItem();
                                     }, 200);
 
+                                    timers.push(t3);
+
                                 }, 2000);
+
+                                timers.push(t2);
                             }
 
                             else
@@ -140,24 +148,30 @@ app
                         {
                             show();
 
-                            setTimeout(function() {
+                            var t4 = setTimeout(function() {
                                 el.play();
                             }, 200);
+
+                            timers.push(t4);
                         }
 
                         else
                         {
                             show();
 
-                            setTimeout(function() {
+                            var t5 = setTimeout(function() {
                                 hide();
 
-                                setTimeout(function() {
+                                var t6 = setTimeout(function() {
                                     parent.classList.remove("animate");
                                     Items.nextItem();
                                 }, 200);
 
+                                timers.push(t6);
+
                             }, 8000);
+
+                            timers.push(t5);
                         }
                     }
     			});
@@ -165,8 +179,16 @@ app
                 scope.$on('$destroy', function() {
                     if(video)
                     {
+                        //Stop all timers
+                        for(var i = 0; i < timers.length; i++) {
+
+                            console.log("Clear: " + timers[i]);
+
+                            clearTimeout(timers[i]);
+                        }
+
                         console.log('PAUSED');
-                        el.stop();
+                        el.pause();
                     }
                 });
       		}
