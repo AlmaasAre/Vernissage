@@ -1,8 +1,11 @@
 .social {
 	font-size: 0;
 	display: block;
-	height: 100%;
-	width: 100%;
+	margin-top: ($gutter/2)*-1;
+	margin-left: ($gutter/2)*-1;
+	width: $screenWidth;
+	height: $screenHeight;
+	overflow: hidden;
 	transform: scale(1);
 	transition: transform 1000ms;
 

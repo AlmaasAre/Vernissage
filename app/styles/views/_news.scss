@@ -1,7 +1,10 @@
 .news {
 	background: $color-pink;
-	height: $screenHeight;
+	margin-top: ($gutter/2)*-1;
+	margin-left: ($gutter/2)*-1;
 	width: $screenWidth;
+	height: $screenHeight;
+	overflow: hidden;
 
 	.news-inner {
 		padding: 16em 6em;
