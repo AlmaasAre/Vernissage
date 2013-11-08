@@ -45,14 +45,14 @@ app
                 if (element.caption.text === "") {
                   $scope.contents.push({
                       id: i,
-                      url: element.videos.standard_resolution.url,
+                      url: element.videos.low_resolution.url,
                       video: true
                   });
                   $scope.$apply();
                 } else {
                   $scope.contents.push({
                       id: i,
-                      url: element.videos.standard_resolution.url,
+                      url: element.videos.low_resolution.url,
                       info: info,
                       video: true
                   });
@@ -63,13 +63,13 @@ app
                 if (element.caption.text === "") {
                   $scope.contents.push({
                       id: i,
-                      url: element.images.standard_resolution.url
+                      url: element.images.low_resolution.url
                   });
                   $scope.$apply();
                 } else {
                   $scope.contents.push({
                       id: i,
-                      url: element.images.standard_resolution.url,
+                      url: element.images.low_resolution.url,
                       info: info
                   });
                   $scope.$apply();
