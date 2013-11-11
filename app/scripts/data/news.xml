@@ -1,0 +1,92 @@
+<ArrayOfNewsPost xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/MakingWaves.CollaborationPlatform.Web.Services.News.Entities">
+<NewsPost>
+<Intro>
+I'm happy to announce that Optimera has selected Making Waves as their strategic partner within digital service innovation for years to come!
+</Intro>
+<PublishDate>2013-10-03T11:08:00</PublishDate>
+<Source>News</Source>
+<Title>New big and important win - Optimera</Title>
+<Url>/News-Archive/Optimera-WIN/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+A big welcome our new employees in Oslo in September.
+</Intro>
+<PublishDate>2013-09-05T10:36:00</PublishDate>
+<Source>News</Source>
+<Title>New employees in September</Title>
+<Url>/News-Archive/New-employees-in-Aeptember/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+Four of our employees in Oslo are leaving in August.
+</Intro>
+<PublishDate>2013-08-15T14:31:00</PublishDate>
+<Source>News</Source>
+<Title>Employees leaving</Title>
+<Url>/News-Archive/Employees-leaving/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+We are happy to welcome several new employees at our Oslo office in August.
+</Intro>
+<PublishDate>2013-07-18T09:37:00</PublishDate>
+<Source>News</Source>
+<Title>New employees in August</Title>
+<Url>/News-Archive/New-employes-in-August/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+Friday 26th of April, a group of happy Wavemakers lined up in the auditorium at the National Gallery to participate at Making Waves Academy.
+</Intro>
+<PublishDate>2013-07-10T11:00:00</PublishDate>
+<Source>News</Source>
+<Title>Summary from Academy in April'13</Title>
+<Url>/News-Archive/Summary-from-Academy-April-2013/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+Dear WaveMaker! As most of you are about to go on vacation, I’d like to take a few moments of your time to share some news with you and, a brief update on the company.
+</Intro>
+<PublishDate>2013-07-01T10:21:00</PublishDate>
+<Source>News</Source>
+<Title>Information update 4/13</Title>
+<Url>/News-Archive/CEO-info-42013/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+Anna Kirah er nå på plass i Uganda for Design Uten Grenser. Her forteller hun litt om prosjektet.
+</Intro>
+<PublishDate>2013-06-25T14:00:00</PublishDate>
+<Source>News</Source>
+<Title>Til Uganda for Design uten grenser</Title>
+<Url>/News-Archive/Til-Uganda-for-Design-uten-grenser/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+Organizational changes to support strategic client development
+</Intro>
+<PublishDate>2013-06-13T10:17:00</PublishDate>
+<Source>News</Source>
+<Title>The Engagement Model</Title>
+<Url>/News-Archive/The-Engagement-Model/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+Our new engagement directors have joined Making Waves.
+</Intro>
+<PublishDate>2013-05-10T08:27:00</PublishDate>
+<Source>News</Source>
+<Title>Engagement Directors</Title>
+<Url>/News-Archive/Engagement-Directors/</Url>
+</NewsPost>
+<NewsPost>
+<Intro>
+We are happy to announce that we have three new exciting deals; BarentsWatch, UDIR and Norrøna.
+</Intro>
+<PublishDate>2013-05-10T07:48:00</PublishDate>
+<Source>News</Source>
+<Title>Three new deals</Title>
+<Url>/News-Archive/Three-new-deals/</Url>
+</NewsPost>
+</ArrayOfNewsPost>

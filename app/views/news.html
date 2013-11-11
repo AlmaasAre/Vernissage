@@ -1,7 +1,15 @@
 <div class="news">
 	
-	<div class="news-inner animated">
-		<h1><small>{{currentNews.date}}</small>{{currentNews.title}}</h1>
+	<div class="news-inner">
+		<h1>
+			<small ng-show="currentNews.date != ''">{{currentNews.pretitle}}<span ng-show="currentNews.time">, {{currentNews.time}}</span>
+			</small>{{currentNews.title}}
+		</h1>
+		<ul ng-show="currentNews.media" class="media">
+			<li ng-repeat="m in currentNews.media"class="animated flipInX">
+				<img ng-src="{{m.url}}" alt="">
+			</li>
+		</ul>
 	</div>
 
 	<img ng-src="images/news_logo.png" alt="" class="logo">

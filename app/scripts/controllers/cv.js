@@ -83,11 +83,11 @@ app
         var t = $timeout(function() {
           $scope.populateTiles();
         }, 1100);
-      }, 12000);
+      }, 15000);
 
       var sint = setInterval(function() {
           $scope.animationClass = "fadeOut";
           $scope.$apply();
-        }, 12000);
+        }, 15000);
 
       });
