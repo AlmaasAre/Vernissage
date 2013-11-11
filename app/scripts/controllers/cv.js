@@ -41,12 +41,12 @@ app
         addProjects = [];
 
         if ($scope.populateCount % 10 == 0 || $scope.populateCount == 1) {
-          $scope.newPeople = [];
-          $scope.tmpNewPeople = [];
+            $scope.newPeople = [];
+            $scope.tmpNewPeople = [];
 
-          for (var i = 0; i < $scope.people.length; i++) {
-            $scope.tmpNewPeople.push($scope.people[i]);
-          }
+            for (var i = 0; i < $scope.people.length; i++) {
+                $scope.tmpNewPeople.push($scope.people[i]);
+            }
         }
 
         $scope.newPeople = shuffle($scope.tmpNewPeople);
