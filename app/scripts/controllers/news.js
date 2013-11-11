@@ -72,7 +72,7 @@ app
 
     	$scope.counter = -1;
     	$scope.currentNews = $scope.news[$scope.counter];
-    	$scope.newsItemLength = 20000;
+    	$scope.newsItemLength = 15000;
 
     	$scope.initNews = function() {
     		if ($scope.counter === ($scope.news.length)-1) {
