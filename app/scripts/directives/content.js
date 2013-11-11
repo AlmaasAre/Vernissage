@@ -11,7 +11,7 @@ app
       		restrict: 'A',
       		link: function postLink(scope, element, attrs) {
 
-                var id = attrs.id;
+                var id = scope.content.id;
 
                 var el = element[0];
 
@@ -20,6 +20,10 @@ app
                 var video = (el.tagName === 'VIDEO');
 
                 var timers = [];
+
+                var imageShowTime = 500;
+
+                scope.content.ready = true;
 
                 function show() {
                     parent.classList.add("show");
@@ -30,9 +34,16 @@ app
                     parent.classList.remove("show");
                 }
 
+                el.addEventListener('change', function() {
+                    scope.content.ready = false;
+                });
+
                 if(video)
                 {
         			el.addEventListener('loadedmetadata', function() {
+
+                        scope.content.ready = true;
+
         				if(!Items.getPlaying())
         				{
                             console.log('Video init');
@@ -71,6 +82,8 @@ app
                     {
                         el.addEventListener('load', function() {
 
+                            scope.content.ready = true;
+
                             if(!Items.getPlaying())
                             {
                                 console.log('Image init');
@@ -89,7 +102,7 @@ app
 
                                     timers.push(t3);
 
-                                }, 2000);
+                                }, imageShowTime);
 
                                 timers.push(t2);
                             }
@@ -109,57 +122,86 @@ app
                 }
 
 
-    			$rootScope.$on('Show', function(event, item) {
+                var onShow, onDestroy, onClear;
 
-                    if(item == id)
-                    {
-                        if(video)
+                if(!onShow)
+                {
+                    console.log("LISTEN "+scope.content.id);
+
+                    onShow = $rootScope.$on('Show', function(event, item) {
+
+                        if(scope.content.ready && item === scope.content.id)
                         {
-                            show();
+                            console.log("MATCH "+scope.content.url);
 
-                            var t4 = setTimeout(function() {
-                                el.play();
-                            }, 200);
+                            if(video)
+                            {
+                                show();
 
-                            timers.push(t4);
-                        }
-
-                        else
-                        {
-                            show();
-
-                            var t5 = setTimeout(function() {
-                                hide();
-
-                                var t6 = setTimeout(function() {
-                                    parent.classList.remove("animate");
-                                    Items.nextItem();
+                                var t4 = setTimeout(function() {
+                                    el.play();
                                 }, 200);
 
-                                timers.push(t6);
+                                timers.push(t4);
+                            }
 
-                            }, 8000);
+                            else
+                            {
+                                show();
 
-                            timers.push(t5);
+                                var t5 = setTimeout(function() {
+                                    hide();
+
+                                    var t6 = setTimeout(function() {
+                                        parent.classList.remove("animate");
+                                        Items.nextItem();
+                                    }, 200);
+
+                                    timers.push(t6);
+
+                                }, imageShowTime);
+
+                                timers.push(t5);
+                            }
                         }
-                    }
-    			});
 
-                scope.$on('$destroy', function() {
+                        else if(!scope.content.ready && item === scope.content.id)
+                        {
+                            Items.nextItem();
+                        }
+        			});
+                }
+
+                function clearTimers() {
+                    //Stop all timers
+                    for(var i = 0; i < timers.length; i++) {
+
+                        console.log("Clear: " + timers[i]);
+
+                        clearTimeout(timers[i]);
+                    }
+                }
+
+                function stopEverything() {
+
+                    console.log("stopEverything");
+
                     if(video)
                     {
-                        //Stop all timers
-                        for(var i = 0; i < timers.length; i++) {
-
-                            console.log("Clear: " + timers[i]);
-
-                            clearTimeout(timers[i]);
-                        }
-
                         console.log('PAUSED');
                         el.pause();
                     }
-                });
-      		}
+                }
+
+                if(!onDestroy)
+                {
+                    onDestroy = scope.$on('$destroy', stopEverything);
+                }
+
+                // if(!onClear)
+                // {
+                //     onClear = scope.$on('Clear', stopEverything);
+                // }
+            }
     	};
 	});

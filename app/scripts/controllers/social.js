@@ -1,7 +1,7 @@
 'use strict';
 
 app
-  	.controller('SocialCtrl', function ($scope, $timeout, $http) {
+  	.controller('SocialCtrl', function ($rootScope, $scope, $timeout, $http, Items) {
 
       var instagramElements = [];
 
@@ -12,78 +12,42 @@ app
 
       var instagramDataUrl = "https://api.instagram.com/v1/users/6805920/media/recent/?access_token=9105191.1fb234f.6c8ebcb04cad4b39b1c3e340b55d514b";
 
-      (function getImages(url, array, update) {
+      function getImages(url, array, update) {
 
           $.ajax({
             dataType: "JSONP",
             url: url,
             success: function(response) {
 
-                console.log("DATA",response.data);
+                // console.log("DATA",response.data);
 
                 if(response.data)
                 {
-                    for(var i = 0; i < response.data.length; i++) {
-                        add(response.data[i], i, array);
-                    }
-
-                    console.log(array);
-
                     if(!update)
                     {
-                        fillArray(array);
+                        for(var i = 0; i < response.data.length; i++) {
+                            add(response.data[i], i, array);
+                        }
+
+                        $scope.$apply(function() {
+                            $scope.contents = instagramElements;
+                        });
                     }
 
-                    else
+                    else if(update)
                     {
-                        updateRandom();
-                    }
+                        for(var i = 0; i < $scope.contents.length; i++) {
 
-                    if(response.pagination.next_url)
-                    {
-                        setTimeout(function() {
-                            console.log("GET MORE");
-                            getImages(response.pagination.next_url, random, true);
-                        }, 15000);
+                            response.data = shuffle(response.data);
+
+                            updateItem($scope.contents[i], response.data[i]);
+                        }
+
+                        $scope.$apply();
                     }
                 }
 
 
-
-              // prioritize();
-              // fillArray();
-
-              // var tmp = [];
-
-              // for(var i = 0; i < $scope.contents.length; i++) {
-              //     tmp.push($scope.contents[i]);
-              // }
-
-              // randomize(tmp);
-
-              // $scope.$apply(function() {
-              //     $scope.contents = tmp;
-              // });
-
-              // var t1 = setInterval(function() {
-              //     cleanArray();
-              //     fillArray();
-
-              //     var tmp = [];
-
-              //     for(var i = 0; i < $scope.contents.length; i++) {
-              //         tmp.push($scope.contents[i]);
-              //     }
-
-              //     randomize(tmp);
-
-              //     $scope.$apply(function() {
-              //         $scope.contents = tmp;
-              //     });
-
-              //     console.log($scope.contents);
-
-              // }, 5000);
             },
             error: function(error) {
               console.log("ERROR!");
@@ -91,42 +55,16 @@ app
             }
           });
 
-      })(instagramDataUrl, instagramElements);
-
-
-      var limit;
-
-      function fillArray(source) {
-
-          var array = source.splice(0);
-
-          limit = (array.length >= 10) ? 10 : array.length;
-
-          for(var i = 0; i < limit; i++) {
-
-              if((Date.now() - array[i].info.title*1000) < 5*24*60*60*1000)
-              {
-                  newest.push(array.splice(i, 1)[0]);
-              }
-          }
-
-          var random = shuffle(array).splice(0, (20-limit));
-
-          $scope.$apply(function() {
-              $scope.contents = shuffle( newest.concat(random) );
-          });
       }
 
-      function updateRandom() {
+      getImages(instagramDataUrl, instagramElements);
 
-          random = shuffle(random);
 
-          var tmp = random.splice(0, (20-limit));
+      var getTimer = setInterval(function() {
 
-          $scope.$apply(function() {
-              $scope.contents = shuffle( newest.concat(tmp) );
-          });
-      }
+          getImages(instagramDataUrl, instagramElements, true);
+
+      }, 15000)
 
 
       function shuffle(o) {
@@ -134,124 +72,96 @@ app
         return o;
       };
 
-     //  function randomize(array) {
-     //      array = shuffle(array);
-     //  }
-
-
-     //  var grid = 4;
-
-     //  var numberOfContents = grid*(grid+1);
-
-     //  var numberOfNew = 10;
-
-     //  function prioritize() {
-
-     //      for(var i = 0; i < 10; i++) {
-     //          if(newTest($scope.instagramElements[i].created_time))
-     //          {
-     //              add($scope.instagramElements[i], i);
-     //          }
-
-     //          else
-     //          {
-     //              numberOfNew--;
-     //          }
-     //      }
-     //  }
-
-    	// function fillArray() {
-
-     //      var arr = $scope.instagramElements.slice(numberOfNew, $scope.instagramElements.length);
-     //      randomize(arr);
-     //      // console.log("ARR", arr.length);
-
-     //      var limit = (arr.length >= 20) ? 20 : arr.length;
-
-     //      limit += (10 - numberOfNew);
-
-    	// 	  for (var i = 0; i < limit; i++) {
-     //          add(arr[i], i+numberOfNew);
-     //          console.log('FILL PUSH');
-    	// 	  }
-    	// }
-
-
-     //  function cleanArray() {
-
-     //      var tmp = [];
-
-     //      for(var i = 0; i < $scope.contents.length; i++) {
-
-     //          if(newTest($scope.contents[i].info.title))
-     //          {
-     //              tmp.push($scope.contents[i]);
-     //          }
-     //      }
-
-     //      $scope.$apply(function() {
-     //          $scope.contents = tmp;
-     //      });
-
-     //      console.log("CLEAN", $scope.contents);
-     //  }
-
-
-     //  function newTest(t) {
-     //      return ((Date.now() - (t * 1000)) < 20*24*60*60*1000);
-     //  }
 
       function add(element, i, array) {
 
             var info = {
-              title: element.created_time * 1000,
-              text: element.caption.text || ""
+                title: element.created_time * 1000,
+                text: element.caption?element.caption.text:""
             }
 
-            if (element.type === "video")
+            if(element.type === "video")
             {
-                if (element.caption.text === "")
+                if(element.caption.text === "")
                 {
-                  array.push({
-                      id: i,
-                      url: element.videos.low_resolution.url,
-                      video: true
-                  });
-
+                    array.push({
+                        id: i,
+                        url: element.videos.low_resolution.url,
+                        video: true
+                    });
                 }
 
                 else
                 {
-                  array.push({
-                      id: i,
-                      url: element.videos.low_resolution.url,
-                      info: info,
-                      video: true
-                  });
+                    array.push({
+                        id: i,
+                        url: element.videos.low_resolution.url,
+                        info: info,
+                        video: true
+                    });
                 }
-              }
+            }
 
-              else
-              {
+            else
+            {
 
                 // console.log("Image " + i);
 
-                if (element.caption.text === "")
+                if(element.caption && element.caption.text === "")
                 {
-                  array.push({
-                      id: i,
-                      url: element.images.low_resolution.url
-                  });
+                    array.push({
+                        id: i,
+                        url: element.images.low_resolution.url
+                    });
                 }
 
                 else
                 {
-                  array.push({
-                      id: i,
-                      url: element.images.low_resolution.url,
-                      info: info
-                  });
+                    array.push({
+                        id: i,
+                        url: element.images.low_resolution.url,
+                        info: info
+                    });
                 }
-              }
+            }
+      }
+
+      function updateItem(target, source) {
+
+            var info = {
+                title: source.created_time * 1000,
+                text: source.caption?source.caption.text:""
+            }
+
+            if(source.type === "video")
+            {
+                if(source.caption.text === "")
+                {
+                    target.url = source.videos.low_resolution.url;
+                    target.video = true;
+                }
+
+                else
+                {
+                    target.url = source.videos.low_resolution.url;
+                    target.info = info;
+                    target.video = true;
+                }
+            }
+
+            else
+            {
+
+                if(source.caption && source.caption.text === "")
+                {
+                    target.url = source.images.low_resolution.url;
+                }
+
+                else
+                {
+                    target.url = source.images.low_resolution.url;
+                    target.info = info;
+                }
+            }
       }
   	});
