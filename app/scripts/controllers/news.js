@@ -23,6 +23,7 @@ app
         $scope.news = [
             {
                 pretitle: "Today",
+                time: "",
                 title: "Happy birthday!",
                 media: [
                     { 
@@ -35,10 +36,12 @@ app
             },
             {
                 pretitle: "This week",
+                time: "",
                 title: "Three new exciting deals; BarentsWatch, UDIR and Norrøna."
             },
             {
                 pretitle: "Foreign employees",
+                time: "",
                 title: "Visiting us this week",
                 media: [
                     { 
@@ -57,10 +60,12 @@ app
             },
             {
                 pretitle: "Last week",
+                time: "",
                 title: "New big and important win - Optimera"
             },
             {
-                pretitle: "Next thursday, 08:30",
+                pretitle: "Next thursday",
+                time: "08:30",
                 title: "Miniseminar EpiServer 7"
             },
         ]
