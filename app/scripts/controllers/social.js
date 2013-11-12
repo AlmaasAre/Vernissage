@@ -117,17 +117,8 @@ app
 
       $scope.$on('NextPage', function() {
           console.log("NextPage");
-          // populateView();
 
           $scope.currentpage++;
-          scroll();
-      });
-
-      $scope.$on('PrevPage', function() {
-          console.log("PrevPage");
-          // populateView();
-
-          $scope.currentpage--;
           scroll();
       });
 
