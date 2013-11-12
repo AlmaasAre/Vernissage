@@ -1,5 +1,6 @@
-<div class="social">
-	<div ng-repeat="content in contents" class="content-container" ng-click="zoom($event)">
+<div id="social" class="social">
+
+	<div ng-repeat="content in contents track by content.id" id="{{content.id}}" class="content-container" ng-click="zoom($event)">
 		<div class="info" ng-if="content.info">
 			<h1 class="title">{{content.info.title | date:'dd.MM.y'}}</h1>
 			<p class="text">
@@ -7,11 +8,8 @@
 			</p>
 		</div>
 		<div class="content-restrictor">
-			<img class="content" ng-if="!content.video" ng-src="{{content.url}}" id="{{content.id}}" content="content" content-directive>
-			<video class="content video" ng-if="content.video" ng-src="{{content.url}}" id="{{content.id}}" content="content" content-directive></video>
+			<img class="content" ng-if="!content.video" ng-src="{{content.url}}" content="content" content-directive>
+			<video class="content video" ng-if="content.video" ng-src="{{content.url}}" content="content" content-directive></video>
 		</div>
-	</div>
-	<div class="content-container identity" style="display: none;">
-		<img ng-src="images/news_logo.png" alt="" class="logo">
 	</div>
 </div>
