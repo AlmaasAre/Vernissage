@@ -34,32 +34,28 @@ app
                     parent.classList.remove("show");
                 }
 
+                el.removeEventListener('change');
                 el.addEventListener('change', function() {
                     scope.content.ready = false;
                 });
 
                 if(video)
                 {
+                    el.removeEventListener('loadedmetadata');
         			el.addEventListener('loadedmetadata', function() {
 
-                        scope.content.ready = true;
+                        Items.readyItem(id);
 
-        				if(!Items.getPlaying())
-        				{
-                            console.log('Video init');
-        					Items.setPlaying(true);
-                            show();
-                            el.play();
+                        // if(!Items.getPlaying())
+                        // {
+                        //     console.log('Video init');
+                        //     Items.setPlaying(true);
+                        //     show();
+                        //     el.play();
+                        // }
 
-                            Items.queueItem(id);
-        				}
-
-        				else
-        				{
-        					Items.queueItem(id);
-        				}
         			});
-
+                    el.removeEventListener('ended');
                     el.addEventListener('ended', function() {
         				console.log("ENDED");
 
@@ -69,7 +65,9 @@ app
 
                         var t1 = setTimeout(function() {
                             parent.classList.remove("animate");
+
                             Items.nextItem();
+
                         }, 200);
 
                         timers.push(t1);
@@ -80,37 +78,31 @@ app
                 {
                     if(scope.content.info)
                     {
+                        el.removeEventListener('load');
                         el.addEventListener('load', function() {
 
-                            scope.content.ready = true;
+                            Items.readyItem(id);
 
-                            if(!Items.getPlaying())
-                            {
-                                console.log('Image init');
-                                Items.setPlaying(true);
-                                show();
+                            // if(!Items.getPlaying())
+                            // {
+                            //     console.log('Image init');
+                            //     Items.setPlaying(true);
+                            //     show();
 
-                                Items.queueItem(id);
+                            //     var t2 = setTimeout(function() {
+                            //         hide();
 
-                                var t2 = setTimeout(function() {
-                                    hide();
+                            //         var t3 = setTimeout(function() {
+                            //             parent.classList.remove("animate");
+                            //             Items.nextItem();
+                            //         }, 200);
 
-                                    var t3 = setTimeout(function() {
-                                        parent.classList.remove("animate");
-                                        Items.nextItem();
-                                    }, 200);
+                            //         timers.push(t3);
 
-                                    timers.push(t3);
+                            //     }, imageShowTime);
 
-                                }, imageShowTime);
-
-                                timers.push(t2);
-                            }
-
-                            else
-                            {
-                                Items.queueItem(id);
-                            }
+                            //     timers.push(t2);
+                            // }
 
                         });
                     }
@@ -121,62 +113,82 @@ app
                     }
                 }
 
+                var onShow, onDestroy, onNextPage, onRestart;
 
-                var onShow, onDestroy, onClear;
+                function showItemInfo(event, item) {
+
+                    if(item === scope.content.id)
+                    {
+                        console.log("MATCH "+scope.content.id, scope.content.url);
+
+                        if(video)
+                        {
+                            console.log("PLAY");
+
+                            show();
+
+                            var t4 = setTimeout(function() {
+                                el.play();
+                            }, 200);
+
+                            timers.push(t4);
+                        }
+
+                        else
+                        {
+                            show();
+
+                            var t5 = setTimeout(function() {
+                                hide();
+
+                                var t6 = setTimeout(function() {
+                                    parent.classList.remove("animate");
+
+                                    Items.nextItem();
+
+                                }, 200);
+
+                                timers.push(t6);
+
+                            }, imageShowTime);
+
+                            timers.push(t5);
+                        }
+                    }
+                }
+
+                if(!onNextPage)
+                {
+                    onNextPage = scope.$on('NextPage', function(event, item) {
+                        setTimeout(function() {
+                            showItemInfo(event, item);
+                        }, 1000);
+                    });
+                }
+
+                if(!onRestart)
+                {
+                    onRestart = scope.$on('Restart', function(event, item) {
+                        setTimeout(function() {
+                            showItemInfo(event, item);
+                        }, 2000);
+                    });
+                }
 
                 if(!onShow)
                 {
-                    console.log("LISTEN "+scope.content.id);
+                    // console.log("LISTEN "+scope.content.id);
 
                     onShow = $rootScope.$on('Show', function(event, item) {
-
-                        if(scope.content.ready && item === scope.content.id)
-                        {
-                            console.log("MATCH "+scope.content.url);
-
-                            if(video)
-                            {
-                                show();
-
-                                var t4 = setTimeout(function() {
-                                    el.play();
-                                }, 200);
-
-                                timers.push(t4);
-                            }
-
-                            else
-                            {
-                                show();
-
-                                var t5 = setTimeout(function() {
-                                    hide();
-
-                                    var t6 = setTimeout(function() {
-                                        parent.classList.remove("animate");
-                                        Items.nextItem();
-                                    }, 200);
-
-                                    timers.push(t6);
-
-                                }, imageShowTime);
-
-                                timers.push(t5);
-                            }
-                        }
-
-                        else if(!scope.content.ready && item === scope.content.id)
-                        {
-                            Items.nextItem();
-                        }
-        			});
+                        showItemInfo(event, item);
+                    });
                 }
 
                 function clearTimers() {
                     //Stop all timers
                     for(var i = 0; i < timers.length; i++) {
 
-                        console.log("Clear: " + timers[i]);
+                        // console.log("Clear: " + timers[i]);
 
                         clearTimeout(timers[i]);
                     }
@@ -197,11 +209,6 @@ app
                 {
                     onDestroy = scope.$on('$destroy', stopEverything);
                 }
-
-                // if(!onClear)
-                // {
-                //     onClear = scope.$on('Clear', stopEverything);
-                // }
             }
     	};
 	});

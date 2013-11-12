@@ -3,73 +3,149 @@
 app
   	.controller('SocialCtrl', function ($rootScope, $scope, $timeout, $http, Items) {
 
-      var instagramElements = [];
+      var elements = [];
 
       var newest = [];
       var random = [];
 
       $scope.contents = [];
 
-      var instagramDataUrl = "https://api.instagram.com/v1/users/6805920/media/recent/?access_token=9105191.1fb234f.6c8ebcb04cad4b39b1c3e340b55d514b";
+      var seconds = 1000;
 
-      function getImages(url, array, update) {
+      var max = {
+        instagram: -1 //Pages of 20 elements. -1 = infinite.
+      }
+
+      $scope.currentpage = 0;
+
+      var instagramDataUrl = "https://api.instagram.com/v1/users/35503519/media/recent/?access_token=9105191.1fb234f.6c8ebcb04cad4b39b1c3e340b55d514b";
+
+      function getInstagram(url, array, update) {
 
           $.ajax({
-            dataType: "JSONP",
-            url: url,
-            success: function(response) {
+              dataType: "JSONP",
+              url: url,
+              success: function(response) {
 
-                // console.log("DATA",response.data);
+                  console.log("DATA",response);
 
-                if(response.data)
-                {
-                    if(!update)
-                    {
-                        for(var i = 0; i < response.data.length; i++) {
-                            add(response.data[i], i, array);
-                        }
+                  if(response.data)
+                  {
+                      for(var i = 0; i < response.data.length; i++) {
+                          add(response.data[i], i, array);
+                      }
 
-                        $scope.$apply(function() {
-                            $scope.contents = instagramElements;
-                        });
-                    }
+                      if((elements.length/20 < max.instagram || max.instagram === -1) && response.pagination.next_url)
+                      {
+                          setTimeout(function() {
+                              getInstagram(response.pagination.next_url, elements);
+                          }, 5*seconds);
+                      }
 
-                    else if(update)
-                    {
-                        for(var i = 0; i < $scope.contents.length; i++) {
+                      else
+                      {
+                          // elements = shuffle(elements);
+                          populateView();
+                          console.log("No more data.");
+                      }
 
-                            response.data = shuffle(response.data);
+                      console.log(elements, elements.length);
+                  }
 
-                            updateItem($scope.contents[i], response.data[i]);
-                        }
+                  else
+                  {
+                      // elements = shuffle(elements);
+                      populateView();
+                      console.log("No more data.");
+                  }
 
-                        $scope.$apply();
-                    }
-                }
 
-
-            },
-            error: function(error) {
-              console.log("ERROR!");
-              console.log(error);
-            }
+              },
+              error: function(error) {
+                console.log("ERROR!");
+                console.log(error);
+              }
           });
 
       }
 
-      getImages(instagramDataUrl, instagramElements);
+      getInstagram(instagramDataUrl, elements);
 
+      var last = false;
 
-      var getTimer = setInterval(function() {
+      function populateView() {
 
-          getImages(instagramDataUrl, instagramElements, true);
+          $scope.$apply(function applyView() {
 
-      }, 15000)
+              $scope.contents = [];
 
+              // var missing = 0;
+
+              // if(currentpage*20 >= elements.length)
+              // {
+              //     missing = (currentpage*20 - elements.length)+20;
+              //     last = true;
+              //     console.log("Last page");
+              // }
+
+              // console.log("Missing: "+missing, "From: "+(currentpage*20-missing), "To: "+(currentpage*20+20-missing));
+
+              // for(var i = (currentpage*20-missing); i < (currentpage*20 + 20 - missing); i++) {
+                for(var i = 0; i < elements.length; i++) {
+                  if(elements[i])
+                  {
+                      $scope.contents.push(elements[i]);
+                  }
+              }
+
+              // if(last)
+              // {
+              //     console.log("Last detected");
+              //     currentpage = 0;
+              //     last = false;
+              // }
+
+              // else
+              // {
+              //     currentpage++;
+              // }
+
+              console.log($scope.contents, $scope.contents.length);
+          });
+
+      };
+
+      $scope.$on('NextPage', function() {
+          console.log("NextPage");
+          // populateView();
+
+          $scope.currentpage++;
+          scroll();
+      });
+
+      $scope.$on('PrevPage', function() {
+          console.log("PrevPage");
+          // populateView();
+
+          $scope.currentpage--;
+          scroll();
+      });
+
+      $scope.$on('Restart', function() {
+          console.log('Restart');
+
+          $scope.currentpage = 0;
+          scroll();
+      });
+
+      function scroll() {
+          var p = $scope.currentpage * (-100);
+          document.getElementById('social').setAttribute('style', '-webkit-transform: translateY('+p+'%)');
+      };
 
       function shuffle(o) {
-        for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-        return o;
+          for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+          return o;
       };
 
 
@@ -80,25 +156,27 @@ app
                 text: element.caption?element.caption.text:""
             }
 
+            var obj;
+
             if(element.type === "video")
             {
                 if(element.caption.text === "")
                 {
-                    array.push({
-                        id: i,
+                    obj = {
+                        id: array.length,
                         url: element.videos.low_resolution.url,
                         video: true
-                    });
+                    };
                 }
 
                 else
                 {
-                    array.push({
-                        id: i,
+                    obj = {
+                        id: array.length,
                         url: element.videos.low_resolution.url,
                         info: info,
                         video: true
-                    });
+                    };
                 }
             }
 
@@ -109,59 +187,66 @@ app
 
                 if(element.caption && element.caption.text === "")
                 {
-                    array.push({
-                        id: i,
+                    obj = {
+                        id: array.length,
                         url: element.images.low_resolution.url
-                    });
+                    };
                 }
 
                 else
                 {
-                    array.push({
-                        id: i,
+                    obj = {
+                        id: array.length,
                         url: element.images.low_resolution.url,
                         info: info
-                    });
+                    };
                 }
+            }
+
+            array.push(obj);
+
+            if(obj.info)
+            {
+                Items.queueItem(obj.id);
             }
       }
 
-      function updateItem(target, source) {
+      // function updateItem(target, source) {
 
-            var info = {
-                title: source.created_time * 1000,
-                text: source.caption?source.caption.text:""
-            }
+      //       var info = {
+      //           title: source.created_time * 1000,
+      //           text: source.caption?source.caption.text:""
+      //       }
 
-            if(source.type === "video")
-            {
-                if(source.caption.text === "")
-                {
-                    target.url = source.videos.low_resolution.url;
-                    target.video = true;
-                }
+      //       if(source.type === "video")
+      //       {
+      //           if(source.caption.text === "")
+      //           {
+      //               target.url = source.videos.low_resolution.url;
+      //               target.video = true;
+      //           }
 
-                else
-                {
-                    target.url = source.videos.low_resolution.url;
-                    target.info = info;
-                    target.video = true;
-                }
-            }
+      //           else
+      //           {
+      //               target.url = source.videos.low_resolution.url;
+      //               target.info = info;
+      //               target.video = true;
+      //           }
+      //       }
 
-            else
-            {
+      //       else
+      //       {
 
-                if(source.caption && source.caption.text === "")
-                {
-                    target.url = source.images.low_resolution.url;
-                }
+      //           if(source.caption && source.caption.text === "")
+      //           {
+      //               target.url = source.images.low_resolution.url;
+      //           }
 
-                else
-                {
-                    target.url = source.images.low_resolution.url;
-                    target.info = info;
-                }
-            }
-      }
+      //           else
+      //           {
+      //               target.url = source.images.low_resolution.url;
+      //               target.info = info;
+      //           }
+      //       }
+      // }
   	});

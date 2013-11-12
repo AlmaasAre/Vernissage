@@ -6,6 +6,7 @@ app
     	var _playing = false;
     	var _next = 0;
     	var _queue = [];
+        var _ready = [];
 
         // Randomize Array function
         function shuffle(o){ //v1.0
@@ -21,8 +22,6 @@ app
             _queue = shuffle(_queue);
     		_playing = val;
     	}
-
-        var dup = 0;
 
         function inArray(item, array) {
 
@@ -47,40 +46,71 @@ app
 
             // if(_queue.length === 20)
             // {
-            //     _queue = shuffle(_queue);
+                // _queue = shuffle(_queue);
             // }
 
-            console.log(_queue, "Items: "+_queue.length, "Duplicaties: "+dup);
+            console.log("Queue: "+_queue.length);
     	}
 
-        var _clearQueue = function() {
-            dup = 0;
-            _queue = [];
-            _playing = true;
-        }
-
-    	var _nextItem = function() {
-    		_next++;
-            console.log("NEXT",  _queue[_next]);
-
-            if(_next === _queue.length)
+        var _readyItem = function(id) {
+            if(!inArray(id, _ready))
             {
-                console.log("All items shown, shuffling array and restarting.");
-                // $rootScope.$broadcast('Clear');
-                _next = 0;
-
-                _queue = shuffle(_queue);
+                _ready.push(id);
+                console.log("READY", _ready.length, _queue.length);
             }
 
-            // console.log("QUEUE", _queue, _next);
-            $rootScope.$broadcast('Show', _queue[_next]);
-    	}
+            if(_ready.length === _queue.length)
+            {
+                _nextItem();
+            }
+        }
+
+        var _clearQueue = function() {
+            console.log("Clear queue");
+            _queue = [];
+            _next = 0;
+        }
+
+        var reverse = false;
+
+    	var _nextItem = function() {
+
+            // console.log("NEXT",  _queue[_next]);
+            // console.log(_next, _queue.length);
+            if(_next !== 0 && _next !== _queue.length-1 && _next % 20 === 0)
+            {
+                // console.log("All items shown, shuffling array and restarting.");
+
+                // _next = 0;
+
+                // _queue = shuffle(_queue);
+                // _playing = false;
+
+                $rootScope.$broadcast('NextPage', _queue[_next]);
+            }
+
+            else if(_next === _queue.length-1)
+            {
+                // _queue = _queue.reverse();
+                // reverse = !reverse;
+                _next = 0;
+                $rootScope.$broadcast('Restart', _queue[_next]);
+            }
+
+            else
+            {
+                $rootScope.$broadcast('Show', _queue[_next]);
+            }
+
+            _next++;
+        }
 
     	return {
     		setPlaying: _setPlaying,
     		getPlaying: _getPlaying,
     		queueItem: _queueItem,
             clearQueue: _clearQueue,
-    		nextItem: _nextItem
+    		nextItem: _nextItem,
+            readyItem: _readyItem
     	}
   	});
