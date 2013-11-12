@@ -26,12 +26,20 @@ body {
 	border: $gutter/2 solid $wrapperBackground;
 	padding: $gutter*3;
 
+	&.half-height {
+		height: $tileHeight / 2;
+	}
+
 	&.double-width {
 		width: $tileWidth * 2;
 	}
 
 	&.double-height {
-		height: $tileHeight * 2;
+		height: ($tileHeight * 2) + $gutter/2;
+	}
+
+	&.quadruple-width {
+		width: $tileWidth * 4;
 	}
 }
 

@@ -12,6 +12,10 @@ app
 	        	templateUrl: 'views/cv.html',
 	    		controller: 'CvCtrl'
 	  		})
+	  		.when('/touchcv', {
+	        	templateUrl: 'views/touchcv.html',
+	    		controller: 'TouchCvCtrl'
+	  		})
 	  		.when('/social', {
 	        	templateUrl: 'views/social.html',
 	    		controller: 'SocialCtrl'

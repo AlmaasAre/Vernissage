@@ -1,0 +1,42 @@
+.touch-cv {
+
+	.department-wrapper {
+		margin-top: ($gutter/2)*-1;
+		margin-left: ($gutter/2)*-1;
+		width: $screenWidth;
+		height: $screenHeight;
+		overflow: hidden;
+		background: #fff;
+		text-align: left;
+		padding: 9em 8.2em;
+
+		h2 {
+			margin: 0 0 1em 1em;
+		}
+
+		.shortcut {
+			border: none;
+			font-size: 1.2em;
+			text-align: left;
+			text-transform: uppercase;
+			background: #000;
+			color: #fff;
+			margin: 1em;
+			display: inline-block;
+			vertical-align: top;
+			position: relative;
+			border-radius: 5px;
+			cursor: pointer;
+
+			&.pink {
+				background: $color-pink;
+				color: #fff;
+			}
+
+			p {
+				padding: 1em 2em;
+				font-weight: bold;
+			}
+		}
+	}
+}

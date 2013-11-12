@@ -1,0 +1,37 @@
+<div class="cv touch-cv">
+	
+	<div class="department-wrapper" ng-hide="filtered">
+		<h2>Choose a department:</h2>
+		<a ng-click="initFiltering('')">
+			<div class="shortcut pink">
+				<p>all employees</p>
+			</div>
+		</a>
+		<span ng-repeat="d in departments | orderBy:'name' track by $index">
+			<a ng-click="initFiltering('{{d.name}}')">
+				<div class="shortcut">
+					<p>{{d.name}}</p>
+				</div>
+			</a>
+		</span>
+	</div>
+
+	<div ng-repeat="tile in pagedItems[currentPage] track by $index" ng-class="animationClass" class="tile-wrapper animated" ng-swipe-left="swipeFunctionTest('next')" ng-swipe-right="swipeFunctionTest('prev')" ng-mousedown="$event.preventDefault()">
+		<img class="image" ng-src="{{tile.picture}}" alt="{{tile.name}}">
+		<div class="tile-inner">
+			<h1 class="title" ng-class="{available: tile.available}">{{tile.displayname}}</h1>
+			<span class="dep" ng-show="tile.department">{{tile.department}}</span>
+			<span class="dep" ng-show="tile.job"> - </span>
+
+			<div ng-show="tile.customText">
+				<h2>Current activities</h2>
+				<p>{{tile.customText}}</p>
+			</div>
+
+			<div class="projects" ng-show="tile.projects">
+				<h2 >Projects</h2>
+				<span class="project" ng-repeat="p in tile.projects | orderBy:p track by $index">{{p}}</span>
+			</div>
+		</div>
+	</div>
+</div>
