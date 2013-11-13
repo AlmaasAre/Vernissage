@@ -8,10 +8,16 @@
 		overflow: hidden;
 		background: #fff;
 		text-align: left;
-		padding: 9.5em 8.2em;
+		padding: 8em 8.2em;
+
+		h1 {
+			font-size: 2.5em;	
+			text-transform: uppercase;
+			margin: 0 0 1em 18px;
+		}
 
 		h2 {
-			margin: 0 0 1em 0.8em;
+			margin: 0 0 1em 18px;
 		}
 
 		.shortcut {
