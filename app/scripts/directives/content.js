@@ -21,7 +21,7 @@ app
 
                 var timers = [];
 
-                var imageShowTime = 500;
+                var imageShowTime = 5000;
 
                 scope.content.ready = true;
 
