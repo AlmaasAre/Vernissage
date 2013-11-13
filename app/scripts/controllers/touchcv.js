@@ -9,6 +9,9 @@ app
       $scope.people = [];
       $scope.addedData = [];
       $scope.filtered = false;
+      $scope.detail = false;
+
+      $scope.detailPerson = "";
 
       $scope.departments = [
         { name: "microsoft .net", 
@@ -196,6 +199,7 @@ app
 
       $scope.swipeEvents = function(direction) {
         console.log($scope.fromTile);
+        $scope.animationClass = "";
         if (direction === "next") {
           $scope.nextPage();
         } else if (direction === "prev") {
@@ -205,6 +209,16 @@ app
             $scope.prevPage();
           }
         }
+      }
+
+      $scope.showPerson = function(person) {
+        $scope.detailPerson = person;
+        $scope.detail = true;
+      }
+
+      $scope.hidePerson = function() {
+        $scope.detailPerson = "";
+        $scope.detail = false;
       }
 
   });
