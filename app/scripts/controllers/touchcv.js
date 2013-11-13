@@ -14,52 +14,33 @@ app
       $scope.detailPerson = "";
 
       $scope.departments = [
-        { name: "microsoft .net", 
-          sub: [".net", ".net 1", ".net 2"] },
-        { name: "episerver", 
-          sub: ["episerver 1", "episerver 2"] },
-        { name: "sharepoint", 
-          sub: ["sharepoint"] },
-        { name: "front-end & mobile", 
-          sub: ["front-end & mobile"] },
-        { name: "java & php", 
-          sub: ["java & open source", "php"] },
+        { name: "microsoft .net", sub: [".net", ".net 1", ".net 2"] },
+        { name: "episerver", sub: ["episerver 1", "episerver 2"] },
+        { name: "sharepoint", sub: ["sharepoint"] },
+        { name: "front-end & mobile", sub: ["front-end & mobile"] },
+        { name: "java & php", sub: ["java & open source", "php"] },
 
-        { name: "graphic design", 
-          sub: ["graphic design"] },
-        { name: "interaction design", 
-          sub: ["interaction design"] },
-        { name: "service design", 
-          sub: ["service design"] },
-        { name: "experience research", 
-          sub: ["experience research"] },
-        { name: "strategy", 
-          sub: ["strategy"] },
+        { name: "graphic design", sub: ["graphic design"] },
+        { name: "interaction design", sub: ["interaction design"] },
+        { name: "service design", sub: ["service design"] },
+        { name: "experience research", sub: ["experience research"] },
+        { name: "strategy", sub: ["strategy"] },
         
-        { name: "sales", 
-          sub: ["sales"] },
-        { name: "project management", 
-          sub: ["project management"] },
-        { name: "application management", 
-          sub: ["application management"] },
-        { name: "content services", 
-          sub: ["content services", "content services 1", "content services 2"] },
-        { name: "it support", 
-          sub: ["it", "it/is"] },
-        { name: "finance & admin", 
-          sub: ["finance & admin"] },
+        { name: "sales", sub: ["sales"] },
+        { name: "project management", sub: ["project management"] },
+        { name: "application management", sub: ["application management"] },
+        { name: "content services", sub: ["content services", "content services 1", "content services 2"] },
+        { name: "it support", sub: ["it", "it/is"] },
+        { name: "finance & admin", sub: ["finance & admin"] },
+        { name: "people & processes", sub: ["people & processes"] },
 
-        { name: "people & processes", 
-          sub: ["people & processes"] },
-        
-        { name: "other departments", 
-          sub: ["ito", "pmo", "lifecycle", "bss", "client operations", "communications", "technology", "marketing", "managing director", "ceo", "experience design"] },
+        { name: "other departments", sub: ["ito", "pmo", "lifecycle", "bss", "client operations", "communications", "technology", "marketing", "managing director", "ceo", "experience design"] },
       ];
 
       $scope.getData = function(){
         $http.get($scope.addedDataUrl).then(function(response) {
           $scope.addedData = response.data;
-          console.log(response.data);
+          // console.log(response.data);
 
           $http.get($scope.employeeDataUrl).then(function(secondResponse) {
             $scope.people = secondResponse.data;
@@ -135,7 +116,7 @@ app
             }
 
             $scope.newPeople[i].projects = addProjects;
-            console.log($scope.newPeople[i]);
+            // console.log($scope.newPeople[i]);
             
             if (($scope.chosenDepartment === "")) {
               $scope.filteredItems.push($scope.newPeople[i]);
@@ -198,7 +179,7 @@ app
       }
 
       $scope.swipeEvents = function(direction) {
-        console.log($scope.fromTile);
+        // console.log($scope.fromTile);
         $scope.animationClass = "";
         if (direction === "next") {
           $scope.nextPage();
@@ -214,6 +195,7 @@ app
       $scope.showPerson = function(person) {
         $scope.detailPerson = person;
         $scope.detail = true;
+        console.log($scope.detailPerson);
       }
 
       $scope.hidePerson = function() {

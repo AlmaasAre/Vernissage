@@ -1,7 +1,11 @@
 .touch-cv {
 
-	.tile-wrapper {
+	.tile-wrapper, .result-expl {
 		
+	}
+
+	.tile-wrapper {
+
 		button {
 			color: #fff;
 			padding: 0;
@@ -150,7 +154,7 @@
 		z-index: 99;
 
 		h1 {
-			font-size: 5em;
+			font-size: 4.5em;
 			line-height: 1em;
 			margin: 0.5em 0;
 
@@ -158,6 +162,7 @@
 				display: block;
 				font-size: 0.5em;
 				color: #888;
+				margin-bottom: 40px;
 			}
 		}
 
@@ -165,6 +170,30 @@
 			border-radius: 50%;
 			width: 250px;
 			margin-bottom: 20px;
+		}
+
+		.background-detail-image {
+			border-radius: 50%;
+			height: $screenHeight + ($screenHeight/8);
+			width: auto;
+			position: absolute;
+			top: ($screenHeight/10)*-1;
+			left: 0;
+			margin-left: ($screenWidth/4)*-1;
+			opacity: 0.082;
+		}
+
+		.detail-text {
+
+	
+			p {	
+				font-size: 1.8em;
+				margin-bottom: 30px;
+
+				strong {
+					display: block;
+				}
+			}
 		}
 
 		button.close {
