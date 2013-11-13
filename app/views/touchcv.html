@@ -1,6 +1,6 @@
 <div class="cv touch-cv">
 	
-	<div class="department-wrapper detail-view" ng-show="detail" >
+	<div class="department-wrapper detail-view" ng-show="detail">
 		<button class="close" ng-click="hidePerson()" ng-mousedown="$event.preventDefault()">&times;</button>
 		<img class="detail-image" ng-src="{{detailPerson.picture}}" alt="{{detailPerson.name}}">
 		<img class="background-detail-image" ng-src="{{detailPerson.picture}}" alt="{{detailPerson.name}}">
@@ -18,7 +18,7 @@
 		<img ng-src="images/news_logo.png" alt="" class="logo">
 	</div>
 
-	<div class="department-wrapper" ng-hide="filtered">
+	<div class="department-wrapper" ng-hide="filtered" ng-mousedown="$event.preventDefault()">
 		<h1>Making Waves employees</h1>
 		<h2>Choose a department</h2>
 		<a ng-click="initFiltering('')">
@@ -38,32 +38,34 @@
 		<img ng-src="images/news_logo.png" alt="" class="logo">
 	</div>
 
-	<div ng-class="animationClass" class="tile-wrapper result-expl animated" ng-swipe-left="swipeEvents('next')" ng-swipe-right="swipeEvents('prev')" ng-mousedown="$event.preventDefault()">
-		<div class="tile-inner">
-			<img ng-click="back()" ng-src="images/mw_logo_horizontal.png" alt="" class="result-logo"><br/>
-			<button ng-click="back()">Back to departments</button>
-			<img ng-src="images/swipe_indication.jpg" class="result-swipe-indication"><br/>
-			<div class="result-detail-text">
-				<p>Swipe to show more.</p>
-				<p>Click on an employee for details.</p>
+	<div ng-swipe-left="swipeEvents('next')" ng-swipe-right="swipeEvents('prev')" ng-mousedown="$event.preventDefault()">
+		<div ng-class="animationClass" class="tile-wrapper result-expl animated" ng-mousedown="$event.preventDefault()">
+			<div class="tile-inner">
+				<img ng-click="back()" ng-src="images/mw_logo_horizontal.png" alt="" class="result-logo"><br/>
+				<button ng-click="back()">Back to departments</button>
+				<img ng-src="images/swipe_indication.jpg" class="result-swipe-indication"><br/>
+				<div class="result-detail-text">
+					<p>Swipe to show more.</p>
+					<p>Click on an employee for details.</p>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div ng-repeat="tile in pagedItems[currentPage] track by $index" ng-class="animationClass" class="tile-wrapper animated" ng-swipe-left="swipeEvents('next')" ng-swipe-right="swipeEvents('prev')" ng-mousedown="$event.preventDefault()">
-		<img ng-click="showPerson(tile)" class="image" ng-src="{{tile.picture}}" alt="{{tile.name}}">
-		<div class="tile-inner">
-			<h1 class="title" ng-class="{available: tile.available}">{{tile.displayname}}</h1>
-			<span class="dep" ng-show="tile.department">{{tile.department}}</span>
-			<span class="dep" ng-show="tile.job"> - </span>
+		<div ng-repeat="tile in pagedItems[currentPage] track by $index" ng-class="animationClass" class="tile-wrapper animated" ng-mousedown="$event.preventDefault()">
+			<img ng-click="showPerson(tile)" class="image" ng-src="{{tile.picture}}" alt="{{tile.name}}">
+			<div class="tile-inner">
+				<h1 class="title" ng-class="{available: tile.available}">{{tile.displayname}}</h1>
+				<span class="dep" ng-show="tile.department">{{tile.department}}</span>
+				<span class="dep" ng-show="tile.job"> - </span>
 
-			<div ng-show="tile.customText">
-				<h2>Current activities</h2>
-				<p>{{tile.customText}}</p>
+				<div ng-show="tile.customText">
+					<h2>Current activities</h2>
+					<p>{{tile.customText}}</p>
+				</div>
+				
+				<br/>
+				<button ng-click="showPerson(tile)"><img ng-src="images/detail_icon.png" alt=""></button>
 			</div>
-			
-			<br/>
-			<button ng-click="showPerson(tile)"><img ng-src="images/detail_icon.png" alt=""></button>
 		</div>
 	</div>
 </div>

@@ -145,7 +145,6 @@
 			box-shadow: none;
 			font-size: 1em;
 			margin-top: 10px;
-			border-bottom: 4px solid $color-pink - 44;
 		}
 	}
 
@@ -161,7 +160,7 @@
 			small {
 				display: block;
 				font-size: 0.5em;
-				color: #888;
+				color: $color-pink;
 				margin-bottom: 40px;
 			}
 		}
