@@ -50,14 +50,15 @@ app
         }
 
         $scope.newPeople = shuffle($scope.tmpNewPeople);
+        $scope.iCount = 8;
 
-        for (var i = 0; i < 8; i++) {
+        for (var i = 0; i < $scope.iCount; i++) {
           if (
-            $scope.people[i].displayname !== "PL Project" && 
-            $scope.people[i].displayname !== "NO Project" &&
-            $scope.people[i].displayname !== "Dag Hensten" &&
-            $scope.people[i].displayname !== "Copy from Torill" &&
-            $scope.people[i].displayname !== "Ola Dunk") {
+            $scope.newPeople[i].displayname !== "PL Project" && 
+            $scope.newPeople[i].displayname !== "NO Project" &&
+            $scope.newPeople[i].displayname !== "Dag Hensten" &&
+            $scope.newPeople[i].displayname !== "Copy from Torill" &&
+            $scope.newPeople[i].displayname !== "Ola Dunk") {
             addProjects = [];
 
             for (var j = 0; j < $scope.addedData[0].projects.length; j++) {
@@ -77,6 +78,10 @@ app
 
             $scope.newPeople[i].projects = addProjects;
             $scope.selectedTiles.push($scope.newPeople[i]);
+          } else {
+            if (i !== 0) {
+              $scope.iCount++;
+            }
           }
         }
       }
