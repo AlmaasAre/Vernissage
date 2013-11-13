@@ -34,7 +34,7 @@ app
         { name: "finance & admin", sub: ["finance & admin"] },
         { name: "people & processes", sub: ["people & processes"] },
 
-        { name: "other departments", sub: ["ito", "pmo", "lifecycle", "bss", "client operations", "communications", "technology", "marketing", "managing director", "ceo", "experience design"] },
+        { name: "other departments", sub: ["ito", "pmo", "lifecycle", "bss", "client operations", "communications", "technology", "marketing", "managing director", "ceo"] },
       ];
 
       $scope.getData = function(){
@@ -65,6 +65,7 @@ app
       $scope.itemsPerPage = 7;
       $scope.pagedItems = [];
       $scope.currentPage = 0;
+      $scope.numberOfPages = 0;
 
       $scope.initFiltering = function(departmentArray) {
         $scope.chosenDepartment = departmentArray;
@@ -142,6 +143,8 @@ app
                 $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
             }
         }
+        $scope.numberOfPages = Math.ceil($scope.filteredItems.length/$scope.itemsPerPage);
+        console.log($scope.numberOfPages);
       };
       
       $scope.range = function (start, end) {
@@ -165,6 +168,8 @@ app
       $scope.nextPage = function () {
         if ($scope.currentPage < $scope.pagedItems.length - 1) {
           $scope.currentPage++;
+        } else if ($scope.currentPage === ($scope.numberOfPages) - 1) {
+          $scope.currentPage = 0;
         }
       };
       
@@ -179,7 +184,6 @@ app
       }
 
       $scope.swipeEvents = function(direction) {
-        // console.log($scope.fromTile);
         $scope.animationClass = "";
         if (direction === "next") {
           $scope.nextPage();
