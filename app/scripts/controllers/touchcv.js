@@ -11,35 +11,46 @@ app
       $scope.filtered = false;
 
       $scope.departments = [
-        { name: "sharepoint" },
-        { name: "front-end & mobile" },
-        { name: "people & processes" },
-        { name: "strategy" },
-        { name: ".net" },
-        { name: ".net 2" },
-        { name: "graphic design" },
-        { name: "project management" },
-        { name: "technology" },
-        { name: "sharepoint" },
-        { name: "episerver 1" },
-        { name: "episerver 2" },
-        { name: "interaction design" },
-        { name: "pmo" },
-        { name: "content-services 1" },
-        { name: "application mangement" },
-        { name: "communications" },
-        { name: "php" },
-        { name: "it" },
-        { name: "finance & admin" },
-        { name: "ito" },
-        { name: "it/is" },
-        { name: "marketing" },
-        { name: "client operations" },
-        { name: "bss" },
-        { name: "experice research" },
-        { name: "java & open source" },
-        { name: "lifecycle" },
-        { name: "content services" }
+        { name: "microsoft .net", 
+          sub: [".net", ".net 1", ".net 2"] },
+        { name: "episerver", 
+          sub: ["episerver 1", "episerver 2"] },
+        { name: "sharepoint", 
+          sub: ["sharepoint"] },
+        { name: "front-end & mobile", 
+          sub: ["front-end & mobile"] },
+        { name: "java & php", 
+          sub: ["java & open source", "php"] },
+
+        { name: "graphic design", 
+          sub: ["graphic design"] },
+        { name: "interaction design", 
+          sub: ["interaction design"] },
+        { name: "service design", 
+          sub: ["service design"] },
+        { name: "experience research", 
+          sub: ["experience research"] },
+        { name: "strategy", 
+          sub: ["strategy"] },
+        
+        { name: "sales", 
+          sub: ["sales"] },
+        { name: "project management", 
+          sub: ["project management"] },
+        { name: "application management", 
+          sub: ["application management"] },
+        { name: "content services", 
+          sub: ["content services", "content services 1", "content services 2"] },
+        { name: "it support", 
+          sub: ["it", "it/is"] },
+        { name: "finance & admin", 
+          sub: ["finance & admin"] },
+
+        { name: "people & processes", 
+          sub: ["people & processes"] },
+        
+        { name: "other departments", 
+          sub: ["ito", "pmo", "lifecycle", "bss", "client operations", "communications", "technology", "marketing", "managing director", "ceo", "experience design"] },
       ];
 
       $scope.getData = function(){
@@ -63,16 +74,16 @@ app
       var addProjects;
       
       $scope.fromTile = 0;
-      $scope.chosenDepartment = "";
+      $scope.chosenDepartment;
 
       $scope.filteredItems = [];
       $scope.groupedItems = [];
-      $scope.itemsPerPage = 8;
+      $scope.itemsPerPage = 7;
       $scope.pagedItems = [];
       $scope.currentPage = 0;
 
-      $scope.initFiltering = function(department) {
-        $scope.chosenDepartment = '' + department;
+      $scope.initFiltering = function(departmentArray) {
+        $scope.chosenDepartment = departmentArray;
         $scope.filtered = true;
         $scope.populateData(0);
         $scope.currentPage = 0;
@@ -96,31 +107,43 @@ app
         $scope.newPeople = $scope.tmpNewPeople;
 
         for (var i = from; i < $scope.people.length; i++) {
-          addProjects = [];
+          if (
+            $scope.people[i].displayname !== "PL Project" && 
+            $scope.people[i].displayname !== "NO Project" &&
+            $scope.people[i].displayname !== "Dag Hensten" &&
+            $scope.people[i].displayname !== "Copy from Torill" &&
+            $scope.people[i].displayname !== "Ola Dunk") {
 
-          for (var j = 0; j < $scope.addedData[0].projects.length; j++) {
+            addProjects = [];
 
-            if ($scope.addedData[0].projects[j].mail === $scope.newPeople[i].mail) {
-              for (var k = 0; k < $scope.addedData[0].projects[j].titles.length; k++) {
-                addProjects.push($scope.addedData[0].projects[j].titles[k]);
-              }
-              $scope.newPeople[i].available = $scope.addedData[0].projects[j].available;
-              $scope.newPeople[i].customText = $scope.addedData[0].projects[j].customText;
+            for (var j = 0; j < $scope.addedData[0].projects.length; j++) {
 
-              if ($scope.newPeople[i].picture === "http://phone.makingwaves.no/employeepictures/image_missing.png") {
-                $scope.newPeople[i].picture = "/images/cv-placeholder.jpeg";
+              if ($scope.addedData[0].projects[j].mail === $scope.newPeople[i].mail) {
+                for (var k = 0; k < $scope.addedData[0].projects[j].titles.length; k++) {
+                  addProjects.push($scope.addedData[0].projects[j].titles[k]);
+                }
+                $scope.newPeople[i].available = $scope.addedData[0].projects[j].available;
+                $scope.newPeople[i].customText = $scope.addedData[0].projects[j].customText;
+
+                if ($scope.newPeople[i].picture === "http://phone.makingwaves.no/employeepictures/image_missing.png") {
+                  $scope.newPeople[i].picture = "/images/cv-placeholder.jpeg";
+                }
               }
             }
-          }
 
-          $scope.newPeople[i].projects = addProjects;
-          
-          if (($scope.chosenDepartment === "")) {
-            $scope.filteredItems.push($scope.newPeople[i]);
-          } else {
-            if (angular.lowercase($scope.newPeople[i].department) === angular.lowercase($scope.chosenDepartment)) {
+            $scope.newPeople[i].projects = addProjects;
+            console.log($scope.newPeople[i]);
+            
+            if (($scope.chosenDepartment === "")) {
               $scope.filteredItems.push($scope.newPeople[i]);
+            } else {
+              for (var a = 0; a < $scope.chosenDepartment.length; a++) {
+                if (angular.lowercase($scope.newPeople[i].department) === angular.lowercase($scope.chosenDepartment[a])) {
+                  $scope.filteredItems.push($scope.newPeople[i]);
+                }
+              }
             }
+
           }
         }
       }
@@ -165,14 +188,22 @@ app
         $scope.currentPage = this.n;
       };
 
-      $scope.swipeFunctionTest = function(direction) {
+      $scope.back = function() {
+        $scope.filtered = false;
+        $scope.pagedItems = [];
+        $scope.filteredItems = [];
+      }
+
+      $scope.swipeEvents = function(direction) {
         console.log($scope.fromTile);
         if (direction === "next") {
           $scope.nextPage();
-          console.log("Next");
         } else if (direction === "prev") {
-          $scope.prevPage();
-          console.log("Prev");
+          if ($scope.currentPage === 0) {
+            $scope.back();
+          } else {
+            $scope.prevPage();
+          }
         }
       }
 

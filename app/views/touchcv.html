@@ -7,16 +7,27 @@
 				<p>all employees</p>
 			</div>
 		</a>
-		<span ng-repeat="d in departments | orderBy:'name' track by $index">
-			<a ng-click="initFiltering('{{d.name}}')">
+		<span ng-repeat="d in departments track by $index">
+			<a ng-click="initFiltering({{d.sub}})">
 				<div class="shortcut">
 					<p>{{d.name}}</p>
 				</div>
 			</a>
 		</span>
+
+		<img ng-src="images/news_logo.png" alt="" class="logo">
+		<img ng-src="images/touch_indication.jpg" class="touch-indication">
 	</div>
 
-	<div ng-repeat="tile in pagedItems[currentPage] track by $index" ng-class="animationClass" class="tile-wrapper animated" ng-swipe-left="swipeFunctionTest('next')" ng-swipe-right="swipeFunctionTest('prev')" ng-mousedown="$event.preventDefault()">
+	<div ng-class="animationClass" class="tile-wrapper result-expl animated" ng-swipe-left="swipeEvents('next')" ng-swipe-right="swipeEvents('prev')" ng-mousedown="$event.preventDefault()">
+		<div class="tile-inner">
+			<img ng-click="back()" ng-src="images/news_logo.png" alt="" class="result-logo"><br/>
+			<img ng-src="images/swipe_indication.jpg" class="result-swipe-indication"><br/>
+			<a ng-click="back()">Back to departments</a>
+		</div>
+	</div>
+
+	<div ng-repeat="tile in pagedItems[currentPage] track by $index" ng-class="animationClass" class="tile-wrapper animated" ng-swipe-left="swipeEvents('next')" ng-swipe-right="swipeEvents('prev')" ng-mousedown="$event.preventDefault()">
 		<img class="image" ng-src="{{tile.picture}}" alt="{{tile.name}}">
 		<div class="tile-inner">
 			<h1 class="title" ng-class="{available: tile.available}">{{tile.displayname}}</h1>
