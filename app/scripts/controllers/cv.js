@@ -52,25 +52,32 @@ app
         $scope.newPeople = shuffle($scope.tmpNewPeople);
 
         for (var i = 0; i < 8; i++) {
-          addProjects = [];
+          if (
+            $scope.people[i].displayname !== "PL Project" && 
+            $scope.people[i].displayname !== "NO Project" &&
+            $scope.people[i].displayname !== "Dag Hensten" &&
+            $scope.people[i].displayname !== "Copy from Torill" &&
+            $scope.people[i].displayname !== "Ola Dunk") {
+            addProjects = [];
 
-          for (var j = 0; j < $scope.addedData[0].projects.length; j++) {
+            for (var j = 0; j < $scope.addedData[0].projects.length; j++) {
 
-            if ($scope.addedData[0].projects[j].mail === $scope.newPeople[i].mail) {
-              for (var k = 0; k < $scope.addedData[0].projects[j].titles.length; k++) {
-                addProjects.push($scope.addedData[0].projects[j].titles[k]);
-              }
-              $scope.newPeople[i].available = $scope.addedData[0].projects[j].available;
-              $scope.newPeople[i].customText = $scope.addedData[0].projects[j].customText;
+              if ($scope.addedData[0].projects[j].mail === $scope.newPeople[i].mail) {
+                for (var k = 0; k < $scope.addedData[0].projects[j].titles.length; k++) {
+                  addProjects.push($scope.addedData[0].projects[j].titles[k]);
+                }
+                $scope.newPeople[i].available = $scope.addedData[0].projects[j].available;
+                $scope.newPeople[i].customText = $scope.addedData[0].projects[j].customText;
 
-              if ($scope.newPeople[i].picture === "http://phone.makingwaves.no/employeepictures/image_missing.png") {
-                $scope.newPeople[i].picture = "/images/cv-placeholder.jpeg";
+                if ($scope.newPeople[i].picture === "http://phone.makingwaves.no/employeepictures/image_missing.png") {
+                  $scope.newPeople[i].picture = "/images/cv-placeholder.jpeg";
+                }
               }
             }
-          }
 
-          $scope.newPeople[i].projects = addProjects;
-          $scope.selectedTiles.push($scope.newPeople[i]);
+            $scope.newPeople[i].projects = addProjects;
+            $scope.selectedTiles.push($scope.newPeople[i]);
+          }
         }
       }
 
