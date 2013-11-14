@@ -167,6 +167,7 @@ app
       
       $scope.nextPage = function () {
         if ($scope.currentPage < $scope.pagedItems.length - 1) {
+
           $scope.currentPage++;
         } else if ($scope.currentPage === ($scope.numberOfPages) - 1) {
           $scope.currentPage = 0;
