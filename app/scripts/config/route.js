@@ -24,6 +24,10 @@ app
 	        	templateUrl: 'views/news.html',
 	    		controller: 'NewsCtrl'
 	  		})
+	  		.when('/menu', {
+	        	templateUrl: 'views/menu.html',
+	    		controller: 'MenuCtrl'
+	  		})
 	  		.otherwise({
 	    		redirectTo: '/'
 	  		});

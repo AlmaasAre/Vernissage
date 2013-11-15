@@ -1,0 +1,91 @@
+.menu {
+	margin-top: ($gutter/2)*-1;
+	margin-left: ($gutter/2)*-1;
+	width: $screenWidth;
+	height: $screenHeight;
+	overflow: hidden;
+	background: #fff;
+	text-align: left;
+	padding: 8em 10em;
+
+	h1 {
+		font-size: 3.5em;	
+		text-transform: uppercase;
+		margin: 0 0 0.2em 85px;
+
+		small {
+			font-size: 0.6em;
+			color: #bbb;
+		}
+	}
+	
+	.half-width {
+		width: 50%;
+		height: 100%;
+		float: left;
+
+		&:nth-child(3) {
+			// border-left: 1px solid $color-pink;
+		}
+	}
+
+	.logo {
+		position: absolute;
+		right: 6em;
+		bottom: 6em;
+		width: 170px;
+	}
+
+	.background-detail-image {
+		border-radius: 50%;
+		height: $screenHeight + ($screenHeight/8);
+		width: auto;
+		position: absolute;
+		top: ($screenHeight/10)*-1;
+		left: 0;
+		margin-left: ($screenWidth/4)*-1;
+		opacity: 0.03;
+		z-index: 0;
+		// display: none;
+	}
+
+	.menu-text {
+		p {	
+			font-size: 2.7em;
+			line-height: 1.4em;
+			margin-bottom: 30px;
+			padding-left: 90px;
+			padding-right: 90px;
+
+			span {
+				display: block;
+				color: $color-pink;
+				text-transform: uppercase;
+				font-size: 0.7em;
+				padding-top: 0.6em;
+			}
+
+			small {
+				font-size: 0.45em;
+				color: #aaa;
+				line-height: 2.5em;
+				min-height: 2.5em;
+				display: block;
+			}
+		}
+	}
+
+	.week {
+		padding: 0px;
+		margin: 0px;
+		border: none;
+		box-shadow: none;
+		background: none;
+		font-size: 1.7em;
+		font-weight: 100;
+		position: absolute;
+		top: 3em;
+		right: 3.5em;
+		color: #ccc;
+	}
+}
