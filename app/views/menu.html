@@ -4,16 +4,41 @@
 
 	<div class="half-width">
 		<div class="menu-text">
-			<p><span>Mandag</span>{{menuItems[0].name}}<small>{{menuItems[0].detail}}</small></p>
-			<p><span>Tirsdag</span>{{menuItems[1].name}}<small>{{menuItems[1].detail}}</small></p>
-			<p><span>Onsdag</span>{{menuItems[2].name}}<small>{{menuItems[2].detail}}</small></p>
+			<p>
+				<span>Mandag</span>{{menuItems[0].name}}<small>{{menuItems[0].detail}}</small>
+				<span class="symbols" ng-repeat="symbol in menuItems[0].symbols">
+					<img ng-src="/images/{{symbol}}-icon.png" alt="">
+				</span>
+			</p>
+			<p>
+				<span>Tirsdag</span>{{menuItems[1].name}}<small>{{menuItems[1].detail}}</small>
+				<span class="symbols" ng-repeat="symbol in menuItems[1].symbols">
+					<img ng-src="/images/{{symbol}}-icon.png" alt="">
+				</span>
+			</p>
+			<p>
+				<span>Onsdag</span>{{menuItems[2].name}}<small>{{menuItems[2].detail}}</small>
+				<span class="symbols" ng-repeat="symbol in menuItems[2].symbols">
+					<img ng-src="/images/{{symbol}}-icon.png" alt="">
+				</span>
+			</p>
 		</div>
 	</div>
 
 	<div class="half-width">
 		<div class="menu-text">
-			<p><span>Torsdag</span>{{menuItems[3].name}}<small>{{menuItems[3].detail}}</small></p>
-			<p><span>Fredag</span>{{menuItems[4].name}}<small>{{menuItems[4].detail}}</small></p>
+			<p>
+				<span>Torsdag</span>{{menuItems[3].name}}<small>{{menuItems[3].detail}}</small>
+				<span class="symbols" ng-repeat="symbol in menuItems[3].symbols">
+					<img ng-src="/images/{{symbol}}-icon.png" alt="">
+				</span>
+			</p>
+			<p>
+				<span>Fredag</span>{{menuItems[4].name}}<small>{{menuItems[4].detail}}</small>
+				<span class="symbols" ng-repeat="symbol in menuItems[4].symbols">
+					<img ng-src="/images/{{symbol}}-icon.png" alt="">
+				</span>
+			</p>
 		</div>
 	</div>
 

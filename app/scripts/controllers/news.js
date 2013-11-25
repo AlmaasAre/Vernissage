@@ -67,7 +67,7 @@ app
                 pretitle: "Next thursday",
                 time: "08:30",
                 title: "Miniseminar EpiServer 7"
-            },
+            }
         ]
 
     	$scope.counter = -1;
