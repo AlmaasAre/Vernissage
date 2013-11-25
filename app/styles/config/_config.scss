@@ -11,10 +11,17 @@
 /* --------------------------------
     General
 -------------------------------- */
-$screenWidth: 1920px;
-$screenHeight: ($screenWidth/16)*9;
+$screenWidth: 100%;
+// $screenHeight: ($screenWidth/16)*9;
+$screenHeight: 100%;
 
 $gutter: 6px;
+
+
+/* --------------------------------
+    Main
+-------------------------------- */
+$main-logo-width: 800px;
 
 
 /* --------------------------------

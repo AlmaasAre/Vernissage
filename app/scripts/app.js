@@ -6,5 +6,6 @@ var app = angular.module('VernissageApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngFitText'
 ]);

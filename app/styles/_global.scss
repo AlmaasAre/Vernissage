@@ -2,20 +2,22 @@
 	box-sizing: border-box;
 }
 
-body {
+html, body {
 	margin: 0;
 	padding: 0;
 	background: $wrapperBackground;
 	font-family: 'Noto Sans', sans-serif;
+	height:100%;
+    padding:0;
 }
 
 .wrapper {
 	width: $screenWidth;
 	height: $screenHeight;
-	position: relative;
+	position: fixed;
 	background: $wrapperBackground;
-	padding: $gutter/2;
 	overflow: hidden;
+	font-size: 15px;
 }
 
 .tile {
@@ -28,18 +30,6 @@ body {
 
 	&.half-height {
 		height: $tileHeight / 2;
-	}
-
-	&.double-width {
-		width: $tileWidth * 2;
-	}
-
-	&.double-height {
-		height: ($tileHeight * 2) + $gutter/2;
-	}
-
-	&.quadruple-width {
-		width: $tileWidth * 4;
 	}
 }
 

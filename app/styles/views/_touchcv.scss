@@ -1,10 +1,33 @@
 .touch-cv {
+	width: $screenWidth;
+	padding: $gutter/2;
+	background: $wrapperBackground;
+	height: $screenHeight;
+	overflow: hidden;
+
+	.touch-cv-wrapper {
+		width: $screenWidth;
+		height: $screenHeight;
+		overflow: hidden;
+		text-align: left;
+	}
 
 	.tile-wrapper, .result-expl {
-		
+		position: relative;
+		width: calc(#{$screenWidth/4} - #{$gutter});
+		height: calc(#{$screenHeight/2} - #{$gutter});
+		box-sizing: border-box;
+		float: left;
+		background-color: #fff;
+		text-align: center;
+		position: relative;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+		overflow: hidden;
+		margin: $gutter/2;
 	}
 
 	.tile-wrapper {
+		padding-top: 2em;
 
 		button {
 			color: #fff;
@@ -13,12 +36,12 @@
 			outline: none;
 			box-shadow: none;
 			font-size: 1em;
-			margin-top: 20px;
+			margin-top: 1em;
 			background: none;
-			padding: 20px;
+			padding: 1em;
 
 			img {
-				width: 35px;
+				width: 3em;
 			}
 		}
 
@@ -36,11 +59,14 @@
 				}
 			}
 		}
+
+		.image {
+			height: 25%;
+			width: auto;
+		}
 	}
 	
 	.department-wrapper {
-		margin-top: ($gutter/2)*-1;
-		margin-left: ($gutter/2)*-1;
 		width: $screenWidth;
 		height: $screenHeight;
 		overflow: hidden;
@@ -51,11 +77,11 @@
 		h1 {
 			font-size: 2em;	
 			text-transform: uppercase;
-			margin: 0 0 0.2em 18px;
+			margin: 0 0 0.2em 0.6em;
 		}
 
 		h2 {
-			margin: 0 0 2em 18px;
+			margin: 0 0 2em 0.6em;
 			color: #aaa;
 			font-weight: normal;
 		}
@@ -89,7 +115,7 @@
 			position: absolute;
 			right: 6em;
 			bottom: 6em;
-			width: 170px;
+			width: 15em;
 		}
 
 		.touch-indication {
@@ -113,7 +139,7 @@
 		}
 
 		.result-swipe-indication {
-			width: 140px;
+			width: 8em;
 			margin-top: 20px;
 			position: absolute;
 			bottom: -20px;

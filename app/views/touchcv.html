@@ -32,7 +32,7 @@
 		<img ng-src="images/news_logo.png" alt="" class="logo">
 	</div>
 
-	<div ng-swipe-left="swipeEvents('next')" ng-swipe-right="swipeEvents('prev')" ng-mousedown="$event.preventDefault()">
+	<div class="touch-cv-wrapper" ng-swipe-left="swipeEvents('next')" ng-swipe-right="swipeEvents('prev')" ng-mousedown="$event.preventDefault()">
 		<div ng-class="animationClass" class="tile-wrapper result-expl animated" ng-mousedown="$event.preventDefault()">
 			<div class="tile-inner">
 				<img ng-click="back()" ng-src="images/mw_logo_horizontal.png" alt="" class="result-logo"><br/>

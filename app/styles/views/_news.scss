@@ -1,7 +1,5 @@
 .news {
 	background: $color-pink;
-	margin-top: ($gutter/2)*-1;
-	margin-left: ($gutter/2)*-1;
 	width: $screenWidth;
 	height: $screenHeight;
 	overflow: hidden;
@@ -54,6 +52,6 @@
 		position: absolute;
 		right: 5em;
 		bottom: 5em;
-		width: 170px;
+		width: 12em;
 	}
 }
