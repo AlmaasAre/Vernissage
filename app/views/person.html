@@ -1,0 +1,35 @@
+<div class="person">
+	<div class="animated" ng-class="animationClass">
+
+		<!-- <img class="background-image" ng-src="{{person.picture}}" alt="{{person.name}}"> -->
+		<img class="background-image" ng-src="{{backgroundPicture}}" alt="{{person.name}}">
+
+		<!-- <h2 class="project">Current project: <span>{{person.projects[0]}}</span></h2> -->
+		<h3 class="working-on">
+			<small>Current project: <span>{{person.projects[0]}}</span></small>
+			<span class="quote">&ldquo;</span>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, aspernatur sapiente dolor cupiditate quidem a.
+			<span class="quote">&rdquo;</span>
+		</h3>
+
+		<div class="sidebar">
+			<img src="/images/logo-symbol-only.png" class="logo" alt="">
+
+			<!-- <span class="intro">People 2013</span> -->
+
+			<img class="image" ng-src="{{person.picture}}" alt="{{person.name}}">
+
+			<h1 class="title" ng-class="{available: person.available}">{{person.displayname}}</h1>
+			<span class="dep" ng-show="person.department">{{person.department}}</span>
+
+			<div class="person-info">
+				<h2>Go-to-person for</h2>
+				<p>{{person.customText}}</p>
+
+				<h2>Passionate about</h2>
+				<p>{{person.customText}}</p>
+			</div>
+		</div>
+		
+	</div>
+</div>

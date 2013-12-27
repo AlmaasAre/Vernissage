@@ -28,6 +28,10 @@ app
 	        	templateUrl: 'views/menu.html',
 	    		controller: 'MenuCtrl'
 	  		})
+	  		.when('/person', {
+	        	templateUrl: 'views/person.html',
+	    		controller: 'PersonCtrl'
+	  		})
 	  		.otherwise({
 	    		redirectTo: '/'
 	  		});
